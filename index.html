@@ -1,0 +1,554 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SensorDyme — Private edge-AI that watches for the moments that matter</title>
+<meta name="description" content="SensorDyme is a privacy-first edge-AI camera. It watches for a drowsy driver, a fallen parent, or an intruder and alerts you instantly — without a single video frame ever leaving the device." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F6F2'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%2315181A' stroke-width='2'/%3E%3Cline x1='16' y1='1' x2='16' y2='9' stroke='%2315181A' stroke-width='2'/%3E%3Cline x1='16' y1='23' x2='16' y2='31' stroke='%2315181A' stroke-width='2'/%3E%3Cline x1='1' y1='16' x2='9' y2='16' stroke='%2315181A' stroke-width='2'/%3E%3Cline x1='23' y1='16' x2='31' y2='16' stroke='%2315181A' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23E8500A'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="top">
+  <a class="nav__brand" href="#top" aria-label="SensorDyme home">
+    <svg class="regmark" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+      <circle cx="16" cy="16" r="11" class="regmark__ring" />
+      <line x1="16" y1="0" x2="16" y2="8" /><line x1="16" y1="24" x2="16" y2="32" />
+      <line x1="0" y1="16" x2="8" y2="16" /><line x1="24" y1="16" x2="32" y2="16" />
+      <circle cx="16" cy="16" r="3" class="regmark__dot" />
+    </svg>
+    <span class="nav__word">SensorDyme</span>
+    <span class="nav__rev">DOSSIER · REV 2026.07</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#problem">Problem</a>
+    <a href="#modes">Modes</a>
+    <a href="#pipeline">How it sees</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <a href="#reserve" class="btn btn--solid nav__cta">Reserve — $150</a>
+  <button class="nav__menu" id="navMenu" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<main>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__meta">
+        <span>SENSORDYME · PRIVACY-FIRST EDGE-AI CAMERA</span>
+        <span>ONE DEVICE · THREE MODES · 0 FRAMES UPLOADED</span>
+      </div>
+      <h1 class="hero__title">
+        Watchfulness is<br />becoming software.
+      </h1>
+      <div class="hero__row">
+        <p class="hero__lede">
+          SensorDyme watches for the moments that matter — a drowsy driver, a fallen
+          parent, an intruder — and alerts you the instant they happen. Every frame is
+          analyzed on the device and discarded. It sees everything. It sends nothing
+          but the alert.
+        </p>
+        <div class="hero__actions">
+          <a href="#reserve" class="btn btn--solid">Reserve a device — $150</a>
+          <a href="#demo" class="btn btn--line">Watch the bench demo</a>
+        </div>
+      </div>
+
+      <!-- FIG. 01 — the demo video slot -->
+      <figure class="vslot" id="demo">
+        <figcaption class="vslot__bar">
+          <span class="fig">FIG. 01</span>
+          <span class="vslot__name">BENCH DEMO — LIVE DETECTION, END TO END</span>
+          <span class="vslot__spec">16:9 · H.264 · <code>assets/demo.mp4</code></span>
+        </figcaption>
+        <div class="vslot__frame">
+          <span class="cal cal--tl" aria-hidden="true"></span>
+          <span class="cal cal--tr" aria-hidden="true"></span>
+          <span class="cal cal--bl" aria-hidden="true"></span>
+          <span class="cal cal--br" aria-hidden="true"></span>
+          <!-- Drop your demo file at assets/demo.mp4 — it will play here. -->
+          <video class="vslot__video" controls preload="metadata" playsinline>
+            <source src="assets/demo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- spec strip: a datasheet row, not a marquee -->
+  <section class="spec" aria-label="Key specifications">
+    <div class="wrap spec__row">
+      <div class="spec__cell"><span class="spec__k">Compute</span><span class="spec__v">Raspberry Pi 5, on-device</span></div>
+      <div class="spec__cell"><span class="spec__k">Hardware</span><span class="spec__v">$150, one-time</span></div>
+      <div class="spec__cell"><span class="spec__k">Modes</span><span class="spec__v">Drive · Care · Watch</span></div>
+      <div class="spec__cell"><span class="spec__k">Video uploaded</span><span class="spec__v">None. Ever.</span></div>
+      <div class="spec__cell"><span class="spec__k">Setup</span><span class="spec__v">One command, &lt; 1 hour</span></div>
+    </div>
+  </section>
+
+  <!-- ============================ PROBLEM ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 02 — THE PROBLEM</span></div>
+  <section class="section" id="problem">
+    <div class="wrap grid-2">
+      <div>
+        <h2 class="h2">40,000 deaths a year.<br />The fix is locked inside<br />new luxury cars.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Distracted and drowsy driving kills more than <strong>40,000 people a year</strong>
+          in the US alone. Driver-monitoring systems proven to catch it in time exist — but
+          they ship only in new premium vehicles, leaving <strong>280 million cars</strong>
+          already on the road with nothing watching over them.
+        </p>
+        <p>
+          SensorDyme brings that same class of protection to the car you already own, for
+          the price of a dash cam. The math it runs is unforgiving — see Fig. 02.
+        </p>
+      </div>
+    </div>
+
+    <!-- FIG. 02 — static glance-geometry drawing. No animation: the number is the point. -->
+    <figure class="figure wrap">
+      <figcaption class="figure__cap">
+        <span class="fig">FIG. 02</span>
+        <span>GLANCE GEOMETRY — DISTANCE COVERED DURING A 2.0 s OFF-ROAD GLANCE AT 55 MPH (NHTSA)</span>
+      </figcaption>
+      <div class="figure__body">
+        <svg class="glancefig" viewBox="0 0 960 200" role="img" aria-label="Engineering drawing: at 55 miles per hour, a car travels 161 feet during a 2 second glance away from the road — shown as a dimension line between the car's position at 0 seconds and at 2 seconds.">
+          <!-- road -->
+          <line x1="20" y1="120" x2="940" y2="120" class="gf-road" />
+          <line x1="20" y1="150" x2="940" y2="150" class="gf-road" />
+          <g class="gf-dashes">
+            <line x1="40" y1="135" x2="80" y2="135" /><line x1="120" y1="135" x2="160" y2="135" />
+            <line x1="200" y1="135" x2="240" y2="135" /><line x1="280" y1="135" x2="320" y2="135" />
+            <line x1="360" y1="135" x2="400" y2="135" /><line x1="440" y1="135" x2="480" y2="135" />
+            <line x1="520" y1="135" x2="560" y2="135" /><line x1="600" y1="135" x2="640" y2="135" />
+            <line x1="680" y1="135" x2="720" y2="135" /><line x1="760" y1="135" x2="800" y2="135" />
+            <line x1="840" y1="135" x2="880" y2="135" />
+          </g>
+          <!-- car at t=0 (outline) -->
+          <g class="gf-car gf-car--ghost" transform="translate(60,122)">
+            <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
+            <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
+          </g>
+          <text x="88" y="112" class="gf-note">t = 0.0 s — eyes leave road</text>
+          <!-- car at t=2 (filled) -->
+          <g class="gf-car gf-car--solid" transform="translate(840,122)">
+            <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
+            <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
+          </g>
+          <text x="830" y="112" class="gf-note" text-anchor="end">t = 2.0 s — eyes return</text>
+          <!-- dimension line -->
+          <line x1="90" y1="60" x2="90" y2="100" class="gf-ext" />
+          <line x1="869" y1="60" x2="869" y2="100" class="gf-ext" />
+          <line x1="90" y1="70" x2="360" y2="70" class="gf-dimline" />
+          <line x1="600" y1="70" x2="869" y2="70" class="gf-dimline" />
+          <path d="M90 70 L102 65 L102 75 Z" class="gf-arrow" />
+          <path d="M869 70 L857 65 L857 75 Z" class="gf-arrow" />
+          <text x="480" y="75" class="gf-dim" text-anchor="middle">161 ft — driven blind</text>
+        </svg>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ============================ MODES ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 03 — OPERATING MODES</span></div>
+  <section class="section" id="modes">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">Buy the hardware once.<br />Change what it protects with a tap.</h2>
+        <p class="section__lede">
+          The same $150 device runs three different products. Switch modes remotely from
+          the iOS app — no new hardware, no reinstall, no truck roll.
+        </p>
+      </div>
+
+      <div class="modes" id="modesPanel" data-mode="drive">
+        <div class="modes__tabs" role="tablist" aria-label="Device modes">
+          <button class="mtab is-active" role="tab" aria-selected="true" data-mode="drive">
+            <span class="mtab__id">MODE A</span>
+            <span class="mtab__name">Drive</span>
+            <span class="mtab__sub">Driver monitoring</span>
+          </button>
+          <button class="mtab" role="tab" aria-selected="false" data-mode="care">
+            <span class="mtab__id">MODE B</span>
+            <span class="mtab__name">Care</span>
+            <span class="mtab__sub">Fall &amp; wellbeing</span>
+          </button>
+          <button class="mtab" role="tab" aria-selected="false" data-mode="watch">
+            <span class="mtab__id">MODE C</span>
+            <span class="mtab__name">Watch</span>
+            <span class="mtab__sub">Home security</span>
+          </button>
+        </div>
+
+        <div class="modes__body">
+          <div class="modes__text">
+            <p class="modes__for" id="modeFor">In the car, for a teen or a tired commuter.</p>
+            <table class="modes__table">
+              <caption class="sr-only">What this mode watches for and how it responds</caption>
+              <tbody id="modeRows"></tbody>
+            </table>
+            <p class="modes__alert">
+              <span class="modes__alert-k">SAMPLE ALERT</span>
+              <span id="modeAlert">“Eyes off road 2.1 s — nudge sent to driver, notice sent to you.”</span>
+            </p>
+          </div>
+
+          <!-- per-mode field clip slot -->
+          <figure class="vslot vslot--small">
+            <figcaption class="vslot__bar">
+              <span class="fig">FIG. 03</span>
+              <span class="vslot__name" id="modeClipName">FIELD CLIP — DRIVE MODE</span>
+              <span class="vslot__spec"><code id="modeClipFile">assets/demo-drive.mp4</code></span>
+            </figcaption>
+            <div class="vslot__frame">
+              <span class="cal cal--tl" aria-hidden="true"></span>
+              <span class="cal cal--br" aria-hidden="true"></span>
+              <!-- Drop per-mode clips at assets/demo-drive.mp4 / demo-care.mp4 / demo-watch.mp4 -->
+              <video class="vslot__video" id="modeVideo" controls preload="metadata" playsinline>
+                <source id="modeVideoSrc" src="assets/demo-drive.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PIPELINE ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 04 — HOW IT SEES</span></div>
+  <section class="section" id="pipeline">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">A fused perception stack,<br />running entirely on a Raspberry&nbsp;Pi&nbsp;5.</h2>
+        <p class="section__lede">
+          Four signals computed together, dozens of times a second, each drawn from the
+          human-factors and computer-vision literature — not guesswork.
+        </p>
+      </div>
+
+      <!-- FIG. 04 — signal chain -->
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 04</span>
+          <span>PERCEPTION SIGNAL CHAIN — ALL STAGES ON-DEVICE</span>
+        </figcaption>
+        <div class="chain">
+          <div class="chain__stage chain__stage--io">
+            <span class="chain__id">IN</span>
+            <span class="chain__name">Lens</span>
+            <span class="chain__desc">Raw frames, held in memory only</span>
+          </div>
+          <span class="chain__link" aria-hidden="true"></span>
+          <div class="chain__group">
+            <div class="chain__stage">
+              <span class="chain__id">CH·1</span>
+              <span class="chain__name">Gaze</span>
+              <span class="chain__desc">Head pose fused with iris position — road, mirror, lap, or phone</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__id">CH·2</span>
+              <span class="chain__name">Drowsiness</span>
+              <span class="chain__desc">PERCLOS eye-closure scoring, the human-factors standard for microsleep</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__id">CH·3</span>
+              <span class="chain__name">Attention</span>
+              <span class="chain__desc">NHTSA glance budgets — flags a look the road can't afford</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__id">CH·4</span>
+              <span class="chain__name">Objects</span>
+              <span class="chain__desc">YOLO detection picks the phone out of the frame, mid-text</span>
+            </div>
+          </div>
+          <span class="chain__link" aria-hidden="true"></span>
+          <div class="chain__stage chain__stage--io">
+            <span class="chain__id">OUT</span>
+            <span class="chain__name">Alert</span>
+            <span class="chain__desc">One event record. Frames already discarded</span>
+          </div>
+        </div>
+      </figure>
+
+      <!-- benchmark: a printed table, not animated bars -->
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">TBL. 01</span>
+          <span>HEAD-TO-HEAD — SAME CLIPS, SCORED THE SAME WAY<sup>†</sup></span>
+        </figcaption>
+        <table class="btable">
+          <thead>
+            <tr><th scope="col">Stack</th><th scope="col">Detection quality index</th><th scope="col" class="btable__num">Score</th></tr>
+          </thead>
+          <tbody>
+            <tr class="btable__us">
+              <th scope="row">SensorDyme</th>
+              <td><span class="btable__bar" style="--w: 94%"></span></td>
+              <td class="btable__num">94</td>
+            </tr>
+            <tr>
+              <th scope="row">openpilot DM (comma.ai)</th>
+              <td><span class="btable__bar" style="--w: 88%"></span></td>
+              <td class="btable__num">88</td>
+            </tr>
+            <tr>
+              <th scope="row">Baseline open-source DMS</th>
+              <td><span class="btable__bar" style="--w: 79%"></span></td>
+              <td class="btable__num">79</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="figure__foot">† Higher is better. Illustrative of our benchmarking method — substitute published run figures before launch.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ PRIVACY ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 05 — PRIVACY ARCHITECTURE</span></div>
+  <section class="section" id="privacy">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">It sees everything.<br />It sends nothing but the alert.</h2>
+      </div>
+
+      <!-- FIG. 05 — the egress boundary, drawn as a record crossing a wall -->
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 05</span>
+          <span>EGRESS BOUNDARY — WHAT EXISTS WHERE</span>
+        </figcaption>
+        <div class="egress">
+          <div class="egress__side egress__side--device">
+            <span class="egress__tag">ON THE DEVICE — COMPUTED, THEN DISCARDED</span>
+            <ul class="egress__list">
+              <li>Raw frames <em>held in memory only</em></li>
+              <li>Faces <em>never written to disk</em></li>
+              <li>Gaze vectors · head pose <em>per frame</em></li>
+              <li>PERCLOS score <em>rolling window</em></li>
+              <li>Object detections <em>per frame</em></li>
+            </ul>
+          </div>
+          <div class="egress__wall" aria-hidden="true">
+            <span class="egress__walllabel">THE ONLY THING THAT CROSSES</span>
+          </div>
+          <div class="egress__side egress__side--cloud">
+            <span class="egress__tag">TO THE CLOUD — ONE EVENT RECORD</span>
+            <pre class="egress__record"><code>{
+  "t":      "18:42:07",
+  "mode":   "drive",
+  "event":  "eyes_off_road",
+  "frames_uploaded": 0
+}</code></pre>
+            <p class="egress__note">No video. No faces. No footage to leak, subpoena, or breach.</p>
+          </div>
+        </div>
+      </figure>
+
+      <p class="pull">
+        This is what lets SensorDyme sidestep the privacy objection that kills consumer
+        cameras — and the cloud-compute bill that kills their margins.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ SYSTEM ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 06 — BUILD STATUS</span></div>
+  <section class="section" id="system">
+    <div class="wrap grid-2 grid-2--loose">
+      <div>
+        <h2 class="h2">A complete product,<br />working end to end — today.</h2>
+        <p class="section__lede">Not a mockup, not a pitch deck. Every layer exists and runs.</p>
+        <table class="buildtable">
+          <caption class="sr-only">Build status of each system layer</caption>
+          <tbody>
+            <tr><th scope="row">Device firmware</th><td>Perception stack on the Pi 5</td><td class="buildtable__st">WORKING</td></tr>
+            <tr><th scope="row">Cloud backend</th><td>Accounts, pairing, alert delivery</td><td class="buildtable__st">WORKING</td></tr>
+            <tr><th scope="row">Native iOS app</th><td>Live status, remote mode switch</td><td class="buildtable__st">WORKING</td></tr>
+            <tr><th scope="row">Enclosure</th><td>3D-printed, dash &amp; wall mount</td><td class="buildtable__st">REV C</td></tr>
+            <tr><th scope="row">Deploy</th><td><code>sensordyme deploy --all</code> · raw hardware to product in &lt; 1 h</td><td class="buildtable__st">WORKING</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FIG. 06 — enclosure engineering drawing -->
+      <figure class="figure figure--tight">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 06</span>
+          <span>ENCLOSURE — REV C, FDM-PRINTED, FRONT &amp; SIDE</span>
+        </figcaption>
+        <div class="figure__body">
+          <svg class="encfig" viewBox="0 0 520 330" role="img" aria-label="Engineering drawing of the SensorDyme enclosure: front view 95 by 70 millimeters with a 12 millimeter camera aperture, side view 30 millimeters deep with a quarter-inch mount boss.">
+            <!-- front view -->
+            <rect x="60" y="50" width="190" height="140" rx="10" class="enc-body" />
+            <circle cx="155" cy="105" r="24" class="enc-detail" />
+            <circle cx="155" cy="105" r="12" class="enc-detail" />
+            <circle cx="155" cy="105" r="3" class="enc-dot" />
+            <circle cx="90" cy="168" r="4" class="enc-detail" />
+            <text x="102" y="172" class="enc-note">status LED</text>
+            <text x="60" y="40" class="enc-label">FRONT</text>
+            <!-- front dims: width -->
+            <line x1="60" y1="210" x2="250" y2="210" class="enc-dimline" />
+            <path d="M60 210 L70 206 L70 214 Z" class="enc-arrow" />
+            <path d="M250 210 L240 206 L240 214 Z" class="enc-arrow" />
+            <text x="155" y="226" class="enc-dim" text-anchor="middle">95 mm</text>
+            <!-- front dims: height -->
+            <line x1="270" y1="50" x2="270" y2="190" class="enc-dimline" />
+            <path d="M270 50 L266 60 L274 60 Z" class="enc-arrow" />
+            <path d="M270 190 L266 180 L274 180 Z" class="enc-arrow" />
+            <text x="280" y="124" class="enc-dim">70 mm</text>
+            <!-- aperture callout -->
+            <line x1="170" y1="85" x2="205" y2="42" class="enc-ext" />
+            <text x="210" y="38" class="enc-note">Ø12 CSI aperture</text>
+            <!-- side view -->
+            <rect x="360" y="50" width="60" height="140" rx="8" class="enc-body" />
+            <rect x="372" y="190" width="36" height="16" class="enc-detail" />
+            <text x="360" y="40" class="enc-label">SIDE</text>
+            <line x1="360" y1="210" x2="420" y2="210" class="enc-dimline" />
+            <path d="M360 210 L368 206 L368 214 Z" class="enc-arrow" />
+            <path d="M420 210 L412 206 L412 214 Z" class="enc-arrow" />
+            <text x="390" y="226" class="enc-dim" text-anchor="middle">30 mm</text>
+            <line x1="390" y1="206" x2="440" y2="238" class="enc-ext" />
+            <text x="356" y="252" class="enc-note">¼-20 mount boss</text>
+            <text x="356" y="264" class="enc-note">dash · wall · tripod</text>
+            <!-- vents -->
+            <line x1="376" y1="70" x2="404" y2="70" class="enc-vent" />
+            <line x1="376" y1="80" x2="404" y2="80" class="enc-vent" />
+            <line x1="376" y1="90" x2="404" y2="90" class="enc-vent" />
+            <text x="430" y="84" class="enc-note">passive vents</text>
+            <!-- title block -->
+            <g class="enc-titleblock">
+              <rect x="60" y="270" width="360" height="40" />
+              <line x1="200" y1="270" x2="200" y2="310" />
+              <line x1="320" y1="270" x2="320" y2="310" />
+              <text x="70" y="286" class="enc-note">PART: SD-ENCL-01</text>
+              <text x="70" y="302" class="enc-note">MAT: PETG, FDM</text>
+              <text x="210" y="286" class="enc-note">SCALE: NTS</text>
+              <text x="210" y="302" class="enc-note">REV: C</text>
+              <text x="330" y="286" class="enc-note">SENSORDYME</text>
+              <text x="330" y="302" class="enc-note">SHT 1 OF 1</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
+    </div>
+
+    <!-- VLM tier -->
+    <div class="wrap">
+      <div class="vlm">
+        <div>
+          <span class="vlm__tag">OPTIONAL — FRONTIER TIER</span>
+          <h3 class="vlm__title">Add human-level judgment. Keep the same hardware.</h3>
+          <p class="vlm__desc">
+            Switch on the frontier vision-language tier and the device gains scene
+            understanding — telling a phone in your hand from a GPS on the mount. As
+            vision-language models improve, SensorDyme improves with them. No new device,
+            ever.
+          </p>
+        </div>
+        <table class="vlm__table">
+          <caption class="sr-only">Example judgments by the vision-language tier</caption>
+          <thead><tr><th scope="col">Scene</th><th scope="col">Judgment</th></tr></thead>
+          <tbody>
+            <tr><td>GPS mounted on dash</td><td class="vlm__ok">allowed</td></tr>
+            <tr><td>Phone held in hand</td><td class="vlm__no">flagged</td></tr>
+            <tr><td>Sunglasses, eyes tracked</td><td class="vlm__ok">allowed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PRICING ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 07 — WHO IT'S FOR &amp; PRICING</span></div>
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">The device at an accessible price.<br />Then monthly peace of mind.</h2>
+      </div>
+
+      <div class="who">
+        <div class="who__item">
+          <span class="who__k">Parents of teen drivers</span>
+          <p>The first three years behind the wheel are the most dangerous. Now something's watching with them.</p>
+        </div>
+        <div class="who__item">
+          <span class="who__k">Adult children of aging parents</span>
+          <p>Know they're okay — without a camera in the house that anyone could ever watch.</p>
+        </div>
+        <div class="who__item">
+          <span class="who__k">Small commercial fleets</span>
+          <p>Lower insurance premiums with monitoring drivers will actually accept.</p>
+        </div>
+      </div>
+
+      <table class="pricetable">
+        <caption class="sr-only">Pricing: hardware and subscription</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="pricetable__blank"></th>
+            <th scope="col"><span class="pricetable__plan">Hardware</span><span class="pricetable__price">$150 <em>once</em></span></th>
+            <th scope="col"><span class="pricetable__plan">Subscription</span><span class="pricetable__price">$12 <em>/ month</em></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">The SensorDyme device + enclosure</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">All three modes, unlocked</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">On-device inference, forever</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">Instant cloud alerts to your phone</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">Full event history &amp; timeline</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">Multi-device &amp; fleet dashboards</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">Frontier VLM judgment tier</th><td>—</td><td>●</td></tr>
+        </tbody>
+      </table>
+      <p class="pricenote">Hardware at an accessible margin. Recurring revenue for the peace of mind — not the pixels.</p>
+    </div>
+  </section>
+
+  <!-- ============================ RESERVE ============================ -->
+  <div class="dim" aria-hidden="true"><span>SEC. 08 — RESERVE</span></div>
+  <section class="section reserve" id="reserve">
+    <div class="wrap reserve__wrap">
+      <h2 class="h2">Watchfulness is becoming software.<br />We're building the device it can be trusted to run on.</h2>
+      <form class="reserve__form" id="reserveForm" novalidate>
+        <label class="sr-only" for="reserveEmail">Email address</label>
+        <input class="reserve__input" id="reserveEmail" type="email" placeholder="you@email.com" autocomplete="email" required />
+        <button class="btn btn--solid" type="submit">Reserve a device</button>
+      </form>
+      <p class="reserve__msg" id="reserveMsg" role="status" aria-live="polite"></p>
+      <p class="reserve__fine">No charge today. We'll email you when your unit is ready to ship.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="foot">
+  <div class="wrap foot__wrap">
+    <div class="foot__brand">
+      <svg class="regmark" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true">
+        <circle cx="16" cy="16" r="11" class="regmark__ring" />
+        <line x1="16" y1="0" x2="16" y2="8" /><line x1="16" y1="24" x2="16" y2="32" />
+        <line x1="0" y1="16" x2="8" y2="16" /><line x1="24" y1="16" x2="32" y2="16" />
+        <circle cx="16" cy="16" r="3" class="regmark__dot" />
+      </svg>
+      <span>SensorDyme</span>
+    </div>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="#problem">Problem</a>
+      <a href="#modes">Modes</a>
+      <a href="#pipeline">How it sees</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reserve">Reserve</a>
+    </nav>
+    <p class="foot__colophon">
+      Set in Archivo, Hanken Grotesk &amp; IBM Plex Mono · © 2026 SensorDyme · No frame leaves the device.
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
