@@ -1,5 +1,5 @@
 /* =========================================================================
-   SensorDyme — interaction layer.
+   Argus — interaction layer.
    Functional only: mobile nav, mode switcher (mirrors the iOS app's remote
    mode switching), reserve form. No decorative animation.
    ========================================================================= */

@@ -1,6 +1,6 @@
-# SensorDyme — website
+# Argus — website
 
-Marketing site for SensorDyme, a privacy-first edge-AI camera that watches for the
+Marketing site for Argus, a privacy-first edge-AI camera that watches for the
 moments that matter (a drowsy driver, a fallen parent, an intruder) and alerts
 instantly — without a single video frame ever leaving the device.
 
@@ -29,7 +29,7 @@ Until a file exists, the slot shows a styled "NO SIGNAL" frame.
 
 ## The design
 
-**The engineering dossier.** SensorDyme is an optical instrument, so the site is styled
+**The engineering dossier.** Argus is an optical instrument, so the site is styled
 as its documentation: lab-white paper, ink rules, numbered figures (FIG. 01–06),
 dimension-line section dividers, camera-calibration checkers on the video frames, and a
 real title block on the enclosure drawing.
