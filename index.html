@@ -206,23 +206,86 @@
       </figure>
     </div>
 
-    <!-- Product shots. Drop the files into assets/ and the plate appears on its
-         own; a slot whose file is missing hides itself rather than showing a
-         broken image, and the figure stays away until at least one has landed.
-         Don't add loading="lazy" here: the figure starts display:none, and a
-         lazy image inside it never loads, so the reveal would never fire. -->
-    <figure class="shots wrap" id="shots" data-loaded="0">
-      <figcaption class="shots__cap">
-        <span class="shots__cap--pair">What ships, and what we're running today</span>
-        <span class="shots__cap--one">The hardware</span>
-      </figcaption>
-      <div class="shots__grid">
-        <div class="shot shot--render">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-1-unit.jpg" alt="Rendering of the retail Argus unit: a white puck with the camera lens set in a black oval and a green status light" />
-          </div>
-          <p class="shot__cap"><span>Retail unit</span>The moulded puck as it's drawn today. Not a production part.</p>
+    <!-- Two viewers over one component (see .viewer in styles.css / script.js):
+         the unit's angles, then the mounts. Each <img> carries the name and
+         description for its slide, so there is one source for the copy.
+         Don't add loading="lazy": inactive slides are display:none, and a lazy
+         image inside a hidden element never loads. -->
+    <figure class="viewer wrap" id="unitViewer" data-viewer>
+      <figcaption class="viewer__cap">The retail unit</figcaption>
+      <div class="viewer__body">
+        <div class="viewer__stage">
+          <img class="viewer__img is-active" src="assets/render-1-unit.jpg"
+               data-name="Front"
+               data-desc="The lens sits in a black oval, with the status light below it."
+               alt="Rendering of the retail Argus unit from the front: a white puck with the camera lens set in a black oval and a green status light" />
+          <img class="viewer__img" src="assets/render-2-side.jpg"
+               data-name="Side"
+               data-desc="Seen edge-on."
+               alt="Side rendering of the Argus puck, seen edge-on" />
+          <img class="viewer__img" src="assets/render-3-back.jpg"
+               data-name="Back"
+               data-desc="No port. It holds to the mount magnetically and takes power through the two contacts."
+               alt="Rendering of the back of the Argus puck, showing four magnetic pads, an alignment slot and two power contacts" />
+          <button class="viewer__arrow viewer__arrow--prev" type="button" aria-label="Previous angle">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M8 1 L3 6 L8 11" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+          </button>
+          <button class="viewer__arrow viewer__arrow--next" type="button" aria-label="Next angle">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1 L9 6 L4 11" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+          </button>
         </div>
+        <div class="viewer__meta" aria-live="polite">
+          <p class="viewer__count"><span class="viewer__i">1</span> of <span class="viewer__n">3</span></p>
+          <h3 class="viewer__name">Front</h3>
+          <p class="viewer__desc">The lens sits in a black oval, with the status light below it.</p>
+          <div class="viewer__picker"></div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="viewer wrap" id="mountViewer" data-viewer>
+      <figcaption class="viewer__cap">Four ways to mount it</figcaption>
+      <div class="viewer__body">
+        <div class="viewer__stage">
+          <img class="viewer__img is-active" src="assets/render-4-vehicle.jpg"
+               data-name="Vehicle mount"
+               data-desc="Ball joint to aim it at the driver, cable out of the base."
+               alt="Rendering of the Argus vehicle mount: the puck on a ball joint above a weighted base, with a cable running out" />
+          <img class="viewer__img" src="assets/render-5-tabletop.jpg"
+               data-name="Tabletop stand"
+               data-desc="For a shelf, a sideboard, a worktop."
+               alt="Rendering of the Argus tabletop stand: the puck on a stem above a round base" />
+          <img class="viewer__img" src="assets/render-6-wall.jpg"
+               data-name="Wall plate"
+               data-desc="Sits flush, so the puck reads as part of the wall."
+               alt="Rendering of the Argus wall plate, a flat oval plate with four pads and a central slot" />
+          <img class="viewer__img" src="assets/render-7-corner.jpg"
+               data-name="Corner mount"
+               data-desc="A wedge for the corner, where one camera sees the whole room."
+               alt="Rendering of the Argus corner mount, a wedge that seats the puck into the corner of a room" />
+          <button class="viewer__arrow viewer__arrow--prev" type="button" aria-label="Previous mount">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M8 1 L3 6 L8 11" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+          </button>
+          <button class="viewer__arrow viewer__arrow--next" type="button" aria-label="Next mount">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 1 L9 6 L4 11" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+          </button>
+        </div>
+        <div class="viewer__meta" aria-live="polite">
+          <p class="viewer__count"><span class="viewer__i">1</span> of <span class="viewer__n">4</span></p>
+          <h3 class="viewer__name">Vehicle mount</h3>
+          <p class="viewer__desc">Ball joint to aim it at the driver, cable out of the base.</p>
+          <div class="viewer__picker"></div>
+        </div>
+      </div>
+      <p class="figure__foot">Concept renderings, not in production. The final design may differ.</p>
+    </figure>
+
+    <!-- The prototype, on its own plate. A plate whose file is missing hides
+         itself rather than showing a broken image, and the figure stays away
+         until at least one has landed. -->
+    <figure class="shots wrap" id="shots" data-loaded="0">
+      <figcaption class="shots__cap">What we're running today</figcaption>
+      <div class="shots__grid">
         <div class="shot shot--proto">
           <div class="shot__frame">
             <img class="shot__img" src="assets/prototype.jpg" alt="The Rev C prototype: a Raspberry Pi 5 and camera module in a printed enclosure" />
@@ -230,54 +293,6 @@
           <p class="shot__cap"><span>Rev C prototype</span>The unit the walkthrough was filmed on. Printed, wired, running.</p>
         </div>
       </div>
-    </figure>
-
-    <!-- The rest of the rendering set, in order: the unit from the other two
-         sides, then each mount. Same plate machinery as above. -->
-    <figure class="shots shots--three wrap" id="renders" data-loaded="0">
-      <figcaption class="shots__cap">
-        <span class="shots__cap--pair">The other angles, and the four ways it mounts</span>
-        <span class="shots__cap--one">Rendering</span>
-      </figcaption>
-      <div class="shots__grid">
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-2-side.jpg" alt="Side rendering of the Argus puck" />
-          </div>
-          <p class="shot__cap"><span>Side</span>Seen edge-on.</p>
-        </div>
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-3-back.jpg" alt="Rendering of the back of the Argus puck, showing four magnetic pads, an alignment slot and two power contacts" />
-          </div>
-          <p class="shot__cap"><span>Back</span>No port. It holds to the mount magnetically and takes power through the two contacts.</p>
-        </div>
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-4-vehicle.jpg" alt="Rendering of the Argus vehicle mount: the puck on a ball joint above a weighted base, with a cable running out" />
-          </div>
-          <p class="shot__cap"><span>Vehicle mount</span>Ball joint to aim it at the driver, cable out of the base.</p>
-        </div>
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-5-tabletop.jpg" alt="Rendering of the Argus tabletop stand: the puck on a stem above a round base" />
-          </div>
-          <p class="shot__cap"><span>Tabletop stand</span>For a shelf, a sideboard, a worktop.</p>
-        </div>
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-6-wall.jpg" alt="Rendering of the Argus wall plate, a flat oval plate with four pads and a central slot" />
-          </div>
-          <p class="shot__cap"><span>Wall plate</span>Sits flush, so the puck reads as part of the wall.</p>
-        </div>
-        <div class="shot">
-          <div class="shot__frame">
-            <img class="shot__img" src="assets/render-7-corner.jpg" alt="Rendering of the Argus corner mount, a wedge that seats the puck into the corner of a room" />
-          </div>
-          <p class="shot__cap"><span>Corner mount</span>A wedge for the corner, where one camera sees the whole room.</p>
-        </div>
-      </div>
-      <p class="figure__foot">Concept renderings, not in production. The final design may differ.</p>
     </figure>
   </section>
 

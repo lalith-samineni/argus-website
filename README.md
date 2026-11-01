@@ -27,36 +27,52 @@ change `aspect-ratio: 9 / 16` on `.demo__video` in `styles.css` to `16 / 9`.
 
 ## Product shots
 
-**The device** section carries three sets of imagery, all driven by files in
+**The device** section carries three pieces of imagery, all driven by files in
 `assets/`:
 
-| Figure | Files | Layout |
-|--------|-------|--------|
+| Block | Files | Behaviour |
+|-------|-------|-----------|
 | FIG. 01 | inline SVG | The *prototype* enclosure drawing (Rev C, printed) |
-| `#shots` | `render-1-unit.jpg`, `prototype.jpg` | Two up: what ships against what's running today |
-| `#renders` | `render-2` to `render-7` | Three up: the other angles, then the four mounts |
+| `#unitViewer` | `render-1-unit`, `render-2-side`, `render-3-back` | Click through the angles |
+| `#mountViewer` | `render-4` to `render-7` | Click through the mounts |
+| `#shots` | `prototype.jpg` | A plain plate for the prototype photo |
 
-Renderings come from `Argus Retail Puck-2.pdf` (7 pages). Each page is
-rasterised at 2x and cropped with **one shared rect**, `x274 y150 653x490` at
-1x, so every render holds the same scale and the puck doesn't change size
-between plates. The crop drops the sheet's burned-in "ARGUS / RETAIL RENDERING"
-header and its disclaimer footer; the disclaimer is reinstated once, under the
-grid, rather than seven times.
+### The viewer
+
+One component, `.viewer`, used twice. Markup is a `<figure data-viewer>`
+holding a stage of `<img class="viewer__img">` elements plus two arrow buttons,
+and a meta panel with a counter, a name, a description and an empty
+`.viewer__picker`.
+
+**Each slide's copy rides on its own `<img>`**, in `data-name` and `data-desc`,
+so there is a single source for it. `script.js` reads those to fill the meta
+panel and to build the picker buttons, which means adding or reordering a
+slide is a pure markup edit: drop an `<img>` into the stage with its two data
+attributes and everything else follows.
+
+Arrows wrap in both directions. The picker jumps straight to a slide. Left and
+right arrow keys work once something inside the viewer has focus. An image that
+fails to load drops out of the rotation, and a viewer whose images all fail
+hides itself.
+
+The first slide is marked `is-active` in the HTML and its copy is written into
+the meta panel, so the viewer shows the right thing before the script runs.
+
+> `loading="lazy"` is deliberately *not* set on these images. Inactive slides
+> are `display:none`, and a lazy image inside a hidden element never loads.
+
+### The renderings
+
+They come from `Argus Retail Puck-2.pdf` (7 pages). Each page is rasterised at
+2x and cropped with **one shared rect**, `x274 y150 653x490` at 1x, so every
+render holds the same scale and the puck doesn't change size between slides.
+The crop drops the sheet's burned-in "ARGUS / RETAIL RENDERING" header and its
+disclaimer footer; the disclaimer is reinstated once, under the mount viewer.
 
 Order is carried in the filenames: unit, side, back, vehicle, tabletop, wall,
 corner.
 
-Plate behaviour, shared by both figures: drop a file in and its plate appears,
-no code change. A plate whose file is missing removes itself instead of showing
-a broken image, and a figure stays hidden until at least one of its plates has
-landed. With a single plate a figure goes one column and its caption switches to
-the short form.
-
 New shots should be landscape at 4:3. The renders are 1306x980.
-
-> `loading="lazy"` is deliberately *not* set on these images. A figure starts
-> `display:none`, and a lazy image inside a hidden element never loads, so the
-> reveal would never fire.
 
 ## How the unit connects
 
@@ -74,7 +90,7 @@ The FIG. 01 drawing is the *prototype* enclosure, which was a printed box with a
 |---------|--------------|
 | Hero | The claim, the price, the walkthrough, the reserve button |
 | Spec strip | Five facts a buyer checks first |
-| The device | What it is, the prototype drawing, and the full rendering set |
+| The device | What it is, the prototype drawing, and the two rendering viewers |
 | How it sees | Signal chain (FIG. 02) and the egress boundary (FIG. 03) |
 | Setup | The three steps from box to watching |
 | Price | $150 plus $12/mo, split by what each buys, and who it's for |
@@ -100,7 +116,7 @@ are where the product itself appears.
 |------|---------|
 | `index.html` | All markup and content, including the SVG figures |
 | `styles.css` | Full visual system |
-| `script.js`  | Mobile nav, the plate loader, and the reserve form |
+| `script.js`  | Mobile nav, the two viewers, the plate loader, and the reserve form |
 | `assets/` | Walkthrough video, renderings, prototype photo, favicon |
 
 ## Before launch

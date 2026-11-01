@@ -2,10 +2,10 @@ demo.mp4            the walkthrough that plays in the hero
                     (portrait 540x960, H.264/AAC, 2:31)
 prototype.jpg       "Rev C prototype" plate
                     (a still from demo.mp4 at 0:40, swap for a real photo)
-render-1-unit.jpg   retail puck, three-quarter  -- paired with prototype.jpg
-render-2-side.jpg   edge-on                     -- the six below sit in the
-render-3-back.jpg   magnetic pads and contacts     three-up grid, in this order
-render-4-vehicle.jpg  vehicle mount
+render-1-unit.jpg     front      -- the unit viewer, in this order
+render-2-side.jpg     side
+render-3-back.jpg     back, magnetic pads and contacts
+render-4-vehicle.jpg  vehicle mount  -- the mount viewer, in this order
 render-5-tabletop.jpg tabletop stand
 render-6-wall.jpg     wall plate
 render-7-corner.jpg   corner mount
@@ -19,9 +19,10 @@ shows once under the grid instead.
 The camera has no port. It holds to its mount magnetically and draws power
 through two contacts on its back, so the cable belongs to the mount.
 
-New product shots: landscape 4:3, 1306x980 or similar. A plate whose file is
-missing hides itself rather than showing a broken image, and a figure stays
-hidden until at least one of its plates is there.
+New product shots: landscape 4:3, 1306x980 or similar. Adding a slide to a
+viewer is a markup edit: drop an <img class="viewer__img"> into the stage with
+data-name and data-desc, and the counter and picker follow. An image that fails
+to load drops out of the rotation rather than showing broken.
 
 The video sits on a plain black well: no poster image, and preload="none" so no
 frame is decoded before playback. Replacing it: swap demo.mp4 and update the

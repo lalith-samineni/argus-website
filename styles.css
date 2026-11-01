@@ -343,6 +343,66 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 .box__v { color: var(--mid); font-size: 0.92rem; text-align: right; }
 
 /* =========================================================================
+   VIEWER: one frame, two arrows and a named picker. Used twice, for the
+   unit's angles and for the mounts. Each slide's copy rides on its <img>.
+   ========================================================================= */
+.viewer { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.viewer__cap {
+  font-family: var(--ff-mono); font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.6rem; margin-bottom: 1.1rem;
+}
+.viewer__body {
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start;
+}
+.viewer__stage {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  background: var(--panel);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.viewer__img { display: none; width: 100%; height: 100%; object-fit: contain; }
+.viewer__img.is-active { display: block; }
+
+.viewer__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 38px; height: 38px; z-index: 2;
+  display: grid; place-items: center;
+  padding: 0; cursor: pointer;
+  background: var(--paper); color: var(--ink);
+  border: 1.5px solid var(--ink); border-radius: 0;
+}
+.viewer__arrow:hover { background: var(--ink); color: var(--paper); }
+.viewer__arrow--prev { left: 14px; }
+.viewer__arrow--next { right: 14px; }
+.viewer__arrow svg { display: block; width: 12px; height: 12px; }
+
+.viewer__count {
+  font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid);
+}
+.viewer__name {
+  font-family: var(--ff-display); font-variation-settings: "wdth" 112;
+  font-weight: 800; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  line-height: 1.15; margin: 0.35rem 0 0.5rem;
+}
+.viewer__desc { color: var(--mid); font-size: 0.95rem; line-height: 1.55; }
+
+.viewer__picker { display: grid; margin-top: 1.3rem; border-top: 1px solid var(--rule); }
+.viewer__pick {
+  text-align: left; padding: 0.55rem 0;
+  background: none; border: 0; border-bottom: 1px solid var(--rule);
+  font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 0.06em;
+  color: var(--mid); cursor: pointer;
+}
+.viewer__pick:hover { color: var(--ink); }
+.viewer__pick[aria-current="true"] { color: var(--signal); }
+.viewer .figure__foot { margin-top: 1.1rem; }
+
+/* =========================================================================
    PRODUCT SHOTS: the renderings and the prototype
    A plate with no file behind it hides itself; see script.js.
    ========================================================================= */
@@ -354,12 +414,7 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   border-bottom: 1px solid var(--rule);
   padding-bottom: 0.6rem; margin-bottom: 1.1rem;
 }
-/* the caption only promises a pair when both plates are actually there */
-.shots__cap--one { display: none; }
-.shots[data-loaded="1"] .shots__cap--pair { display: none; }
-.shots[data-loaded="1"] .shots__cap--one { display: inline; }
 .shots__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 1.75rem); }
-.shots--three .shots__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 /* one plate on its own shouldn't stretch the full measure */
 .shots[data-loaded="1"] .shots__grid { grid-template-columns: minmax(0, 560px); }
 .shot[data-missing="true"] { display: none; }
@@ -370,8 +425,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   overflow: hidden;
 }
 .shot__img { display: block; width: 100%; height: 100%; object-fit: cover; }
-/* a rendering is drawn on its own ground: show all of it, don't crop */
-.shot--render .shot__img { object-fit: contain; }
 .shot__cap { font-size: 0.88rem; color: var(--mid); line-height: 1.5; margin-top: 0.7rem; }
 .shots .figure__foot { margin-top: 1.1rem; }
 .shot__cap span {
@@ -553,7 +606,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   .egress__side--cloud { border-left: 1.5px solid var(--ink); border-top: 0; }
   .egress__wall { width: auto; height: 44px; border-block: 0; border-inline: 1.5px solid var(--ink); }
   .egress__walllabel { transform: translate(-50%, -50%); }
-  .shots--three .shots__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps { grid-template-columns: 1fr; }
   .steps__item { border-right: 0; border-bottom: 1px solid var(--rule); }
   .steps__item:last-child { border-bottom: 0; }
@@ -568,8 +620,8 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
     background: var(--paper); border-bottom: 1.5px solid var(--ink);
     padding: 1.4rem var(--pad); font-size: 0.95rem;
   }
-  .shots__grid, .shots--three .shots__grid,
-  .shots[data-loaded="1"] .shots__grid { grid-template-columns: 1fr; }
+  .shots__grid { grid-template-columns: 1fr; }
+  .viewer__body { grid-template-columns: 1fr; }
   .spec__row { grid-template-columns: 1fr 1fr; }
   .chain__group { grid-template-columns: 1fr; }
   .chain__group .chain__stage { border-left-width: 1.5px !important; border-top-width: 0; }

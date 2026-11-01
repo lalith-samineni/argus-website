@@ -59,6 +59,78 @@
     });
   });
 
+  /* ---------- rendering viewers ----------
+     One frame, two arrows and a picker built from the slides. Each <img>
+     carries its own name and description, so the copy has a single source.
+     An image that fails to load drops out of the rotation. */
+  $$("[data-viewer]").forEach((viewer) => {
+    const imgs = $$(".viewer__img", viewer);
+    const nameEl = $(".viewer__name", viewer);
+    const descEl = $(".viewer__desc", viewer);
+    const iEl = $(".viewer__i", viewer);
+    const nEl = $(".viewer__n", viewer);
+    const picker = $(".viewer__picker", viewer);
+    let slides = imgs;
+    let index = 0;
+
+    function show(i) {
+      if (!slides.length) return;
+      index = (i + slides.length) % slides.length;
+      const slide = slides[index];
+      imgs.forEach((img) => img.classList.remove("is-active"));
+      slide.classList.add("is-active");
+      nameEl.textContent = slide.dataset.name;
+      descEl.textContent = slide.dataset.desc;
+      iEl.textContent = String(index + 1);
+      $$(".viewer__pick", picker).forEach((b, bi) => {
+        if (bi === index) b.setAttribute("aria-current", "true");
+        else b.removeAttribute("aria-current");
+      });
+    }
+
+    function ready() {
+      slides = imgs.filter((img) => img.naturalWidth > 0);
+      if (!slides.length) {
+        viewer.hidden = true;
+        return;
+      }
+      picker.replaceChildren(
+        ...slides.map((img, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "viewer__pick";
+          b.textContent = img.dataset.name;
+          b.addEventListener("click", () => show(i));
+          return b;
+        })
+      );
+      nEl.textContent = String(slides.length);
+      show(0);
+    }
+
+    let pending = imgs.length;
+    const settle = () => {
+      if (--pending === 0) ready();
+    };
+    imgs.forEach((img) => {
+      if (img.complete) settle();
+      else {
+        img.addEventListener("load", settle, { once: true });
+        img.addEventListener("error", settle, { once: true });
+      }
+    });
+
+    $(".viewer__arrow--prev", viewer).addEventListener("click", () => show(index - 1));
+    $(".viewer__arrow--next", viewer).addEventListener("click", () => show(index + 1));
+    // arrow keys work once something inside the viewer has focus
+    viewer.addEventListener("keydown", (e) => {
+      const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      show(index + step);
+    });
+  });
+
   /* ---------- reserve form ----------
      Front end only. Wire the submit to your backend or email provider. */
   const form = $("#reserveForm");
