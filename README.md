@@ -26,6 +26,27 @@ initial page load). To swap in a new cut, replace the file and update the
 change `aspect-ratio: 9 / 16` on `.demo__video` in `styles.css` to `16 / 9` —
 the hero grid handles either.
 
+## Product shots
+
+Two plates sit in **The device** section, each tied to a file in `assets/`:
+
+| File | Plate | Fit |
+|------|-------|-----|
+| `assets/retail-render.png` | Retail unit — how it ships | `contain`, so the whole render shows on white |
+| `assets/prototype.jpg` | Rev C prototype — what's running today | `cover`, cropped to 4:3 |
+
+Drop a file in and its plate appears; no code change. A plate whose file is
+missing removes itself instead of showing a broken image, and the whole figure
+stays hidden until at least one has landed — so the page never shows an empty
+slot in public. With one plate the figure goes single-column and the caption
+changes from the pairing line to just "The hardware".
+
+Landscape images around 4:3 work best (roughly 1200×900 or larger).
+
+> `loading="lazy"` is deliberately *not* set on these images. The figure starts
+> `display:none`, and a lazy image inside a hidden element never loads, so the
+> reveal would never fire.
+
 ## Page order
 
 | Section | What it does |
@@ -57,13 +78,18 @@ where the product itself appears.
 | `index.html` | All markup and content, including the SVG figures |
 | `styles.css` | Full visual system |
 | `script.js`  | Mobile nav and the reserve form — nothing else |
-| `assets/` | Walkthrough video and favicon |
+| `assets/` | Walkthrough video, product shots, favicon |
 
 ## Before launch
 
 - **The reserve form is front-end only.** `script.js` validates the address and
   prints a confirmation; nothing is stored. Wire the submit handler to a backend
   or email provider before taking real reservations.
+- **The retail rendering is missing.** `assets/retail-render.png` has no file
+  behind it, so that plate is hidden. Add the render and it appears.
+- **The prototype image is a still lifted from the walkthrough video**, not a
+  photograph. It's sharp enough at the size it's shown, but a real photo of the
+  Rev C unit would be better — replace `assets/prototype.jpg`.
 - **Drive / Care / Watch are named but no longer explained.** The section that
   described them was removed. They are still referenced in the spec strip, in
   setup step 3, and in the price table — either reintroduce an explanation or

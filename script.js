@@ -25,6 +25,41 @@
     );
   }
 
+  /* ---------- product shots ----------
+     Each plate is tied to a file in assets/. If the file isn't there the
+     plate takes itself out rather than showing a broken image, and the whole
+     figure stays hidden until at least one of them has loaded. */
+  const shots = $("#shots");
+  if (shots) {
+    const slots = $$(".shot", shots);
+    let pending = slots.length;
+
+    const settle = () => {
+      if (--pending > 0) return;
+      shots.dataset.loaded = String(
+        slots.filter((s) => s.dataset.missing !== "true").length
+      );
+    };
+
+    slots.forEach((slot) => {
+      const img = $(".shot__img", slot);
+      if (img.complete) {
+        if (!img.naturalWidth) slot.dataset.missing = "true";
+        settle();
+      } else {
+        img.addEventListener("load", settle, { once: true });
+        img.addEventListener(
+          "error",
+          () => {
+            slot.dataset.missing = "true";
+            settle();
+          },
+          { once: true }
+        );
+      }
+    });
+  }
+
   /* ---------- reserve form ----------
      Front end only. Wire the submit to your backend or email provider. */
   const form = $("#reserveForm");

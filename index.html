@@ -207,6 +207,32 @@
         <p class="figure__foot">Dimensions are Rev C as printed. Final production tolerances may differ slightly.</p>
       </figure>
     </div>
+
+    <!-- Product shots. Drop the files into assets/ and the plate appears on its
+         own; a slot whose file is missing hides itself rather than showing a
+         broken image, and the figure stays away until at least one has landed.
+         Don't add loading="lazy" here: the figure starts display:none, and a
+         lazy image inside it never loads, so the reveal would never fire. -->
+    <figure class="shots wrap" id="shots" data-loaded="0">
+      <figcaption class="shots__cap">
+        <span class="shots__cap--pair">What ships, and what we're running today</span>
+        <span class="shots__cap--one">The hardware</span>
+      </figcaption>
+      <div class="shots__grid">
+        <div class="shot shot--render">
+          <div class="shot__frame">
+            <img class="shot__img" src="assets/retail-render.png" alt="Product rendering of the Argus unit as it will ship" />
+          </div>
+          <p class="shot__cap"><span>Retail unit</span>The moulded enclosure, as it will arrive on your dash.</p>
+        </div>
+        <div class="shot shot--proto">
+          <div class="shot__frame">
+            <img class="shot__img" src="assets/prototype.jpg" alt="The Rev C prototype: a Raspberry Pi 5 and camera module in a printed enclosure" />
+          </div>
+          <p class="shot__cap"><span>Rev C prototype</span>The unit the walkthrough was filmed on — printed, wired, running.</p>
+        </div>
+      </div>
+    </figure>
   </section>
 
   <div class="dim" aria-hidden="true"><span>HOW IT SEES</span></div>
