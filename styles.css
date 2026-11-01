@@ -185,10 +185,10 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 }
 .demo__label { font-weight: 600; text-transform: uppercase; }
 .demo__time { margin-left: auto; color: var(--signal); }
-.demo__frame { position: relative; border: 1.5px solid var(--ink); background: var(--screen); }
+.demo__frame { position: relative; border: 1.5px solid var(--ink); background: #000; }
 .demo__video {
   display: block; width: 100%; aspect-ratio: 9 / 16;
-  background: var(--screen); object-fit: contain;
+  background: #000; object-fit: contain;
 }
 .demo__cap { font-size: 0.88rem; color: var(--mid); margin-top: 0.8rem; max-width: 36ch; }
 
@@ -259,94 +259,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 .prose p + p { margin-top: 1.1rem; }
 .prose { color: var(--mid); font-size: clamp(1.02rem, 1.5vw, 1.15rem); }
 .prose strong { color: var(--ink); }
-
-/* =========================================================================
-   FIG 02 — GLANCE GEOMETRY
-   ========================================================================= */
-.glancefig { width: 100%; min-width: 640px; height: auto; display: block; }
-.gf-road { stroke: var(--ink); stroke-width: 1.5; }
-.gf-dashes line { stroke: var(--rule-2); stroke-width: 2; }
-.gf-car--ghost path, .gf-car--ghost circle { fill: none; stroke: var(--mid); stroke-width: 1.5; stroke-dasharray: 3 3; }
-.gf-car--solid path, .gf-car--solid circle { fill: var(--ink); }
-.gf-note { font-family: var(--ff-mono); font-size: 11px; fill: var(--mid); }
-.gf-ext { stroke: var(--rule-2); stroke-width: 1; }
-.gf-dimline { stroke: var(--signal); stroke-width: 1.5; }
-.gf-arrow { fill: var(--signal); }
-.gf-dim { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; fill: var(--signal); }
-
-/* =========================================================================
-   WATCH PROFILES
-   ========================================================================= */
-.modes { border: 1.5px solid var(--ink); background: var(--panel); }
-.modes__tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--ink); }
-.mtab {
-  display: flex; flex-direction: column; gap: 0.15rem;
-  padding: 0.9rem 1.1rem; text-align: left;
-  background: var(--paper); border: 0; border-right: 1px solid var(--rule);
-  cursor: pointer; font: inherit; color: inherit;
-}
-.mtab:last-child { border-right: 0; }
-.mtab:hover { background: var(--panel); }
-.mtab.is-active { background: var(--panel); box-shadow: inset 0 -3px 0 var(--signal); }
-.mtab__name { font-family: var(--ff-display); font-variation-settings: "wdth" 112; font-weight: 800; font-size: 1.25rem; }
-.mtab__sub { font-size: 0.8rem; color: var(--mid); }
-
-.modes__body {
-  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
-  padding: clamp(1.4rem, 3vw, 2.2rem);
-  align-items: start;
-}
-.modes__body:focus-visible { outline: 2px solid var(--signal); outline-offset: -4px; }
-.modes__for { font-family: var(--ff-mono); font-size: 0.76rem; color: var(--signal); margin-bottom: 1rem; }
-.modes__table { width: 100%; border-collapse: collapse; }
-.modes__table td {
-  vertical-align: top;
-  padding: 0.85rem 0 0.85rem 0;
-  border-top: 1px solid var(--rule);
-  font-size: 0.95rem; line-height: 1.5;
-}
-.modes__table tr:last-child td { border-bottom: 1px solid var(--rule); }
-.modes__table td:first-child {
-  font-family: var(--ff-mono); font-size: 0.66rem; letter-spacing: 0.06em;
-  color: var(--mid); width: 6em; padding-top: 0.95rem; padding-right: 1rem; white-space: nowrap;
-}
-
-/* =========================================================================
-   THE ALERT, AS IT ARRIVES — the whole product in one notification
-   ========================================================================= */
-.phone__screen {
-  position: relative;
-  background: var(--screen);
-  border: 1.5px solid var(--ink);
-  padding: 2.3rem 0.85rem 1.6rem;
-}
-.phone__time {
-  position: absolute; top: 0.75rem; left: 0; right: 0;
-  text-align: center;
-  font-family: var(--ff-display); font-variation-settings: "wdth" 100;
-  font-weight: 600; font-size: 0.8rem;
-  color: color-mix(in srgb, #ffffff 55%, transparent);
-}
-.phone__notif {
-  display: flex; gap: 0.7rem; align-items: flex-start;
-  background: color-mix(in srgb, #ffffff 10%, transparent);
-  border: 1px solid color-mix(in srgb, #ffffff 14%, transparent);
-  border-radius: 14px;
-  padding: 0.75rem 0.8rem;
-}
-.phone__icon { width: 26px; height: 26px; flex: none; color: color-mix(in srgb, #ffffff 78%, transparent); }
-.phone__text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
-.phone__app {
-  display: flex; gap: 0.5rem; align-items: baseline;
-  font-family: var(--ff-mono); font-size: 0.58rem; letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, #ffffff 55%, transparent);
-}
-.phone__ago { margin-left: auto; }
-.phone__head { font-size: 0.95rem; color: #ffffff; line-height: 1.3; font-weight: 600; }
-.phone__body { font-size: 0.85rem; color: color-mix(in srgb, #ffffff 68%, transparent); line-height: 1.45; }
-.phone__cap { font-size: 0.82rem; color: var(--mid); margin-top: 0.75rem; }
 
 /* =========================================================================
    FIG 04 — SIGNAL CHAIN
@@ -585,8 +497,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   .hero__grid { grid-template-columns: 1fr; }
   .demo { max-width: 400px; }
   .grid-2 { grid-template-columns: 1fr; }
-  .modes__body { grid-template-columns: 1fr; }
-  .phone { max-width: 360px; }
   .spec__row { grid-template-columns: repeat(3, 1fr); }
   .spec__cell { border-bottom: 1px solid var(--rule); }
   .spec__cell:first-child { padding-left: 1.2rem; }
@@ -618,10 +528,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
     padding: 1.4rem var(--pad); font-size: 0.95rem;
   }
   .spec__row { grid-template-columns: 1fr 1fr; }
-  .modes__tabs { grid-template-columns: 1fr; }
-  .mtab { border-right: 0; border-bottom: 1px solid var(--rule); flex-direction: row; align-items: baseline; gap: 0.8rem; }
-  .mtab:last-child { border-bottom: 0; }
-  .mtab.is-active { box-shadow: inset 3px 0 0 var(--signal); }
   .chain__group { grid-template-columns: 1fr; }
   .chain__group .chain__stage { border-left-width: 1.5px !important; border-top-width: 0; }
   .chain__group .chain__stage:first-child { border-top-width: 1.5px; }

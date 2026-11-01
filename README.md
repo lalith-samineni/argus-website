@@ -17,13 +17,14 @@ python3 -m http.server 8000
 ## The walkthrough video
 
 `assets/demo.mp4` is the 2:31 hands-on walkthrough (portrait, 540×960, H.264 /
-AAC, ~20 MB) and plays in the hero. `assets/demo-poster.jpg` is the still shown
-before playback — frame 40 s, the assembled unit.
+AAC, ~20 MB) and plays in the hero.
 
-To swap in a new cut, replace both files and update two things in `index.html`:
-the `<span class="demo__time">` label and the duration in `README`. If the new
-clip is landscape, change `aspect-ratio: 9 / 16` on `.demo__video` in
-`styles.css` to `16 / 9` — the hero grid handles either.
+It sits on a plain black well: no poster image, and `preload="none"` so the
+browser decodes no frame before you press play (it also keeps the 20 MB off the
+initial page load). To swap in a new cut, replace the file and update the
+`<span class="demo__time">` label in `index.html`. If the new clip is landscape,
+change `aspect-ratio: 9 / 16` on `.demo__video` in `styles.css` to `16 / 9` —
+the hero grid handles either.
 
 ## Page order
 
@@ -32,8 +33,7 @@ clip is landscape, change `aspect-ratio: 9 / 16` on `.demo__video` in
 | Hero | The claim, the price, the walkthrough, the reserve button |
 | Spec strip | Five facts a buyer checks first |
 | The device | What it is and what's in the box, with the Rev C drawing (FIG. 01) |
-| What it watches | Drive / Care / Watch, the alert as it lands, plain-language setup, the 2 s threshold (FIG. 02) |
-| How it sees | Signal chain (FIG. 03) and the egress boundary (FIG. 04) |
+| How it sees | Signal chain (FIG. 02) and the egress boundary (FIG. 03) |
 | Setup | The three steps from box to watching |
 | Price | $150 + $12/mo, split by what each buys, and who it's for |
 | Reserve | Email form, what happens next, and the six questions people ask first |
@@ -43,13 +43,12 @@ clip is landscape, change `aspect-ratio: 9 / 16` on `.demo__video` in
 A quiet paper page around one loud thing: the walkthrough. Lab-white stock, ink
 rules, numbered figures and dimension-line dividers — the product is an optical
 instrument, so the page is set like its documentation. The only dark surfaces are
-where the product itself appears: the video well and the phone notification.
+where the product itself appears.
 
 - **Type** — Archivo (expanded/black) display · Hanken Grotesk body · IBM Plex Mono for data
 - **Color** — paper `#F6F6F2`, ink `#15181A`, safety orange `#E8500A` (signal),
   verification green `#17694A` (private/working). Tokens at the top of `styles.css`.
-- **No decorative animation.** The only motion is the profile switcher (which
-  mirrors the remote switch in the iOS app) and video playback.
+- **No animation at all.** The only motion left on the page is video playback.
 
 ## Files
 
@@ -57,14 +56,18 @@ where the product itself appears: the video well and the phone notification.
 |------|---------|
 | `index.html` | All markup and content, including the SVG figures |
 | `styles.css` | Full visual system |
-| `script.js`  | Mobile nav, profile switcher, reserve form — nothing else |
-| `assets/` | Walkthrough video, poster still, favicon |
+| `script.js`  | Mobile nav and the reserve form — nothing else |
+| `assets/` | Walkthrough video and favicon |
 
 ## Before launch
 
 - **The reserve form is front-end only.** `script.js` validates the address and
   prints a confirmation; nothing is stored. Wire the submit handler to a backend
   or email provider before taking real reservations.
+- **Drive / Care / Watch are named but no longer explained.** The section that
+  described them was removed. They are still referenced in the spec strip, in
+  setup step 3, and in the price table — either reintroduce an explanation or
+  reword those three places.
 - **Enclosure dimensions in FIG. 01** are Rev C as printed — confirm them against
   the production parts.
 - **Claims to keep honest:** the 30-day return window, "first production run",

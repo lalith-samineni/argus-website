@@ -58,7 +58,6 @@
   </a>
   <nav class="nav__links" aria-label="Primary">
     <a href="#device">The device</a>
-    <a href="#watches">What it watches</a>
     <a href="#privacy">Privacy</a>
     <a href="#setup">Setup</a>
     <a href="#price">Price</a>
@@ -108,9 +107,8 @@
           <video
             class="demo__video"
             controls
-            preload="metadata"
+            preload="none"
             playsinline
-            poster="assets/demo-poster.jpg"
           >
             <source src="assets/demo.mp4" type="video/mp4" />
             Your browser can't play this video. Download it at
@@ -211,127 +209,6 @@
     </div>
   </section>
 
-  <div class="dim" aria-hidden="true"><span>WHAT IT WATCHES</span></div>
-
-  <!-- ============================ WHAT IT WATCHES ============================ -->
-  <section class="section" id="watches">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 class="h2">Tell it what to watch for.<br />It watches for that.</h2>
-        <p class="section__lede">
-          Three profiles cover what most people buy it for. Switch between them from the
-          app — the same device, pointed at a different job, with no new hardware.
-        </p>
-      </div>
-
-      <div class="modes" id="modesPanel" data-mode="drive">
-        <div class="modes__tabs" role="tablist" aria-label="Watch profiles">
-          <button class="mtab is-active" role="tab" aria-selected="true" aria-controls="modeBody" id="tab-drive" data-mode="drive">
-            <span class="mtab__name">Drive</span>
-            <span class="mtab__sub">In the car</span>
-          </button>
-          <button class="mtab" role="tab" aria-selected="false" aria-controls="modeBody" id="tab-care" data-mode="care">
-            <span class="mtab__name">Care</span>
-            <span class="mtab__sub">In the house</span>
-          </button>
-          <button class="mtab" role="tab" aria-selected="false" aria-controls="modeBody" id="tab-watch" data-mode="watch">
-            <span class="mtab__name">Watch</span>
-            <span class="mtab__sub">At the door</span>
-          </button>
-        </div>
-
-        <div class="modes__body" id="modeBody" role="tabpanel" aria-labelledby="tab-drive" tabindex="0">
-          <div class="modes__text">
-            <p class="modes__for" id="modeFor">For a teen driver, or anyone driving tired.</p>
-            <table class="modes__table">
-              <caption class="sr-only">What this profile watches for and how it responds</caption>
-              <tbody id="modeRows"></tbody>
-            </table>
-          </div>
-
-          <!-- what actually lands on your phone -->
-          <div class="phone">
-            <div class="phone__screen">
-              <span class="phone__time" id="phoneTime">6:42</span>
-              <div class="phone__notif">
-                <svg class="phone__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#argus-mark" /></svg>
-                <div class="phone__text">
-                  <span class="phone__app">Argus<span class="phone__ago">now</span></span>
-                  <strong class="phone__head" id="phoneHead">Eyes off road — 2.1 s</strong>
-                  <span class="phone__body" id="phoneBody">Nudge sent in the car. Car unit, Drive profile.</span>
-                </div>
-              </div>
-            </div>
-            <p class="phone__cap">What arrives on your phone. No video attached — there isn't any.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- plain-language configuration -->
-      <div class="vlm">
-        <div>
-          <h3 class="vlm__title">Need something the profiles don't cover? Describe it.</h3>
-          <p class="vlm__desc">
-            Type what you want watched in plain language — “tell me if the dog gets on the
-            couch”, “let me know if Dad hasn't come out of his room by ten” — and Argus
-            turns it into a working configuration. The frontier vision tier gives it the
-            judgment to tell a phone in a hand from a GPS on the mount, and it gets better
-            as those models do. Same device, no replacement.
-          </p>
-        </div>
-        <table class="vlm__table">
-          <caption class="sr-only">Examples of judgments the vision tier makes</caption>
-          <thead><tr><th scope="col">What it sees</th><th scope="col">What it does</th></tr></thead>
-          <tbody>
-            <tr><td>GPS mounted on the dash</td><td class="vlm__ok">lets it go</td></tr>
-            <tr><td>Phone held in a hand</td><td class="vlm__no">alerts you</td></tr>
-            <tr><td>Sunglasses, eyes still tracked</td><td class="vlm__ok">lets it go</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- why the threshold is what it is -->
-      <figure class="figure">
-        <figcaption class="figure__cap">
-          <span class="fig">FIG. 02</span>
-          <span>Why two seconds is the threshold — distance covered at 55 mph</span>
-        </figcaption>
-        <div class="figure__body">
-          <svg class="glancefig" viewBox="0 0 960 200" role="img" aria-label="Engineering drawing: at 55 miles per hour, a car travels 161 feet during a 2 second glance away from the road, shown as a dimension line between the car's position at 0 seconds and at 2 seconds.">
-            <line x1="20" y1="120" x2="940" y2="120" class="gf-road" />
-            <line x1="20" y1="150" x2="940" y2="150" class="gf-road" />
-            <g class="gf-dashes">
-              <line x1="40" y1="135" x2="80" y2="135" /><line x1="120" y1="135" x2="160" y2="135" />
-              <line x1="200" y1="135" x2="240" y2="135" /><line x1="280" y1="135" x2="320" y2="135" />
-              <line x1="360" y1="135" x2="400" y2="135" /><line x1="440" y1="135" x2="480" y2="135" />
-              <line x1="520" y1="135" x2="560" y2="135" /><line x1="600" y1="135" x2="640" y2="135" />
-              <line x1="680" y1="135" x2="720" y2="135" /><line x1="760" y1="135" x2="800" y2="135" />
-              <line x1="840" y1="135" x2="880" y2="135" />
-            </g>
-            <g class="gf-car gf-car--ghost" transform="translate(60,122)">
-              <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
-              <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
-            </g>
-            <text x="88" y="112" class="gf-note">t = 0.0 s — eyes leave the road</text>
-            <g class="gf-car gf-car--solid" transform="translate(840,122)">
-              <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
-              <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
-            </g>
-            <text x="830" y="112" class="gf-note" text-anchor="end">t = 2.0 s — eyes come back</text>
-            <line x1="90" y1="60" x2="90" y2="100" class="gf-ext" />
-            <line x1="869" y1="60" x2="869" y2="100" class="gf-ext" />
-            <line x1="90" y1="70" x2="360" y2="70" class="gf-dimline" />
-            <line x1="600" y1="70" x2="869" y2="70" class="gf-dimline" />
-            <path d="M90 70 L102 65 L102 75 Z" class="gf-arrow" />
-            <path d="M869 70 L857 65 L857 75 Z" class="gf-arrow" />
-            <text x="480" y="75" class="gf-dim" text-anchor="middle">161 ft driven blind</text>
-          </svg>
-        </div>
-        <p class="figure__foot">Two seconds is the NHTSA glance budget. Argus alerts at the moment it is spent, not after.</p>
-      </figure>
-    </div>
-  </section>
-
   <div class="dim" aria-hidden="true"><span>HOW IT SEES</span></div>
 
   <!-- ============================ PIPELINE + PRIVACY ============================ -->
@@ -347,7 +224,7 @@
 
       <figure class="figure">
         <figcaption class="figure__cap">
-          <span class="fig">FIG. 03</span>
+          <span class="fig">FIG. 02</span>
           <span>Signal chain — every stage on the device</span>
         </figcaption>
         <div class="chain">
@@ -388,7 +265,7 @@
 
       <figure class="figure">
         <figcaption class="figure__cap">
-          <span class="fig">FIG. 04</span>
+          <span class="fig">FIG. 03</span>
           <span>What exists where</span>
         </figcaption>
         <div class="egress">
@@ -579,7 +456,6 @@
     </div>
     <nav class="foot__links" aria-label="Footer">
       <a href="#device">The device</a>
-      <a href="#watches">What it watches</a>
       <a href="#privacy">Privacy</a>
       <a href="#setup">Setup</a>
       <a href="#price">Price</a>
