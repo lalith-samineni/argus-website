@@ -1,12 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Argus — Private edge-AI that watches for the moments that matter</title>
-<meta name="description" content="Argus is a privacy-first edge-AI camera. It watches for a drowsy driver, a fallen parent, or an intruder and alerts you instantly — without a single video frame ever leaving the device." />
+<title>Argus — the camera that watches for trouble and keeps the footage to itself</title>
+<meta name="description" content="Argus is a $150 camera that runs its AI on board. It tells you a driver's eyes left the road, or that someone fell — without a single frame of video leaving the device. Reserve one." />
 <link rel="icon" href="assets/favicon.svg" />
+<meta property="og:title" content="Argus — watches for trouble, keeps the footage to itself" />
+<meta property="og:description" content="A $150 camera that runs its AI on board. Alerts you in seconds. Uploads nothing." />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
 <!-- ===== Argus mark: a camera iris of watching eyes (defined once, reused) ===== -->
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
@@ -47,16 +55,15 @@
   <a class="nav__brand" href="#top" aria-label="Argus home">
     <svg class="argusmark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><use href="#argus-mark" /></svg>
     <span class="nav__word">Argus</span>
-    <span class="nav__rev">DOSSIER · REV 2026.07</span>
   </a>
   <nav class="nav__links" aria-label="Primary">
-    <a href="#problem">Problem</a>
-    <a href="#modes">Modes</a>
-    <a href="#pipeline">How it sees</a>
+    <a href="#device">The device</a>
+    <a href="#watches">What it watches</a>
     <a href="#privacy">Privacy</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#setup">Setup</a>
+    <a href="#price">Price</a>
   </nav>
-  <a href="#reserve" class="btn btn--solid nav__cta">Reserve — $150</a>
+  <a href="#reserve" class="btn btn--solid nav__cta">Reserve a device</a>
   <button class="nav__menu" id="navMenu" aria-label="Menu" aria-expanded="false">
     <span></span><span></span>
   </button>
@@ -65,354 +72,96 @@
 <main>
   <!-- ============================ HERO ============================ -->
   <section class="hero">
-    <div class="wrap">
-      <div class="hero__meta">
-        <span>ARGUS · PRIVACY-FIRST EDGE-AI CAMERA</span>
-        <span>ONE DEVICE · THREE MODES · 0 FRAMES UPLOADED</span>
-      </div>
-      <h1 class="hero__title">
-        Watchfulness is<br />becoming software.
-      </h1>
-      <div class="hero__row">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__title">Watches for trouble.<br />Keeps the footage<br />to itself.</h1>
         <p class="hero__lede">
-          Argus watches for the moments that matter — a drowsy driver, a fallen
-          parent, an intruder — and alerts you the instant they happen. Every frame is
-          analyzed on the device and discarded. It sees everything. It sends nothing
-          but the alert.
+          Argus is a small camera that runs its AI on board. It can tell you a driver's
+          eyes have been off the road for two seconds, or that someone fell in the
+          kitchen — and it does it without sending a single frame of video anywhere.
         </p>
+
+        <dl class="hero__price">
+          <div><dt>Device</dt><dd>$150 once</dd></div>
+          <div><dt>Alerts</dt><dd>$12 a month</dd></div>
+          <div><dt>Video uploaded</dt><dd class="hero__price-ok">None</dd></div>
+        </dl>
+
         <div class="hero__actions">
-          <a href="#reserve" class="btn btn--solid">Reserve a device — $150</a>
-          <a href="#demo" class="btn btn--line">Watch the bench demo</a>
+          <a href="#reserve" class="btn btn--solid">Reserve a device</a>
+          <a href="#demo" class="btn btn--line">Watch the walkthrough</a>
         </div>
+        <p class="hero__fine">No charge today. Reserving holds your place in the first production run.</p>
       </div>
 
-      <!-- FIG. 01 — the demo video slot -->
-      <figure class="vslot" id="demo">
-        <figcaption class="vslot__bar">
-          <span class="fig">FIG. 01</span>
-          <span class="vslot__name">BENCH DEMO — LIVE DETECTION, END TO END</span>
-          <span class="vslot__spec">16:9 · H.264 · <code>assets/demo.mp4</code></span>
+      <!-- the walkthrough: the loudest thing on a quiet page -->
+      <figure class="demo" id="demo">
+        <figcaption class="demo__bar">
+          <span class="demo__label">Walkthrough</span>
+          <span class="demo__time">2:31</span>
         </figcaption>
-        <div class="vslot__frame">
+        <div class="demo__frame">
           <span class="cal cal--tl" aria-hidden="true"></span>
           <span class="cal cal--tr" aria-hidden="true"></span>
           <span class="cal cal--bl" aria-hidden="true"></span>
           <span class="cal cal--br" aria-hidden="true"></span>
-          <!-- Drop your demo file at assets/demo.mp4 — it will play here. -->
-          <video class="vslot__video" controls preload="metadata" playsinline>
+          <video
+            class="demo__video"
+            controls
+            preload="metadata"
+            playsinline
+            poster="assets/demo-poster.jpg"
+          >
             <source src="assets/demo.mp4" type="video/mp4" />
+            Your browser can't play this video. Download it at
+            <a href="assets/demo.mp4">assets/demo.mp4</a>.
           </video>
         </div>
+        <p class="demo__cap">The device, the app, and a live alert — start to finish.</p>
       </figure>
     </div>
   </section>
 
-  <!-- spec strip: a datasheet row, not a marquee -->
+  <!-- datasheet row -->
   <section class="spec" aria-label="Key specifications">
     <div class="wrap spec__row">
-      <div class="spec__cell"><span class="spec__k">Compute</span><span class="spec__v">Raspberry Pi 5, on-device</span></div>
-      <div class="spec__cell"><span class="spec__k">Hardware</span><span class="spec__v">$150, one-time</span></div>
-      <div class="spec__cell"><span class="spec__k">Modes</span><span class="spec__v">Drive · Care · Watch</span></div>
-      <div class="spec__cell"><span class="spec__k">Video uploaded</span><span class="spec__v">None. Ever.</span></div>
-      <div class="spec__cell"><span class="spec__k">Setup</span><span class="spec__v">One command, &lt; 1 hour</span></div>
+      <div class="spec__cell"><span class="spec__k">Compute</span><span class="spec__v">Raspberry Pi 5, on board</span></div>
+      <div class="spec__cell"><span class="spec__k">Profiles</span><span class="spec__v">Drive, Care, Watch</span></div>
+      <div class="spec__cell"><span class="spec__k">Alert latency</span><span class="spec__v">Seconds</span></div>
+      <div class="spec__cell"><span class="spec__k">Video uploaded</span><span class="spec__v">None, ever</span></div>
+      <div class="spec__cell"><span class="spec__k">Setup</span><span class="spec__v">One command, under an hour</span></div>
     </div>
   </section>
 
-  <!-- ============================ PROBLEM ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 02 — THE PROBLEM</span></div>
-  <section class="section" id="problem">
-    <div class="wrap grid-2">
-      <div>
-        <h2 class="h2">40,000 deaths a year.<br />The fix is locked inside<br />new luxury cars.</h2>
-      </div>
-      <div class="prose">
-        <p>
-          Distracted and drowsy driving kills more than <strong>40,000 people a year</strong>
-          in the US alone. Driver-monitoring systems proven to catch it in time exist — but
-          they ship only in new premium vehicles, leaving <strong>280 million cars</strong>
-          already on the road with nothing watching over them.
-        </p>
-        <p>
-          Argus brings that same class of protection to the car you already own, for
-          the price of a dash cam. The math it runs is unforgiving — see Fig. 02.
-        </p>
-      </div>
-    </div>
+  <div class="dim" aria-hidden="true"><span>THE DEVICE</span></div>
 
-    <!-- FIG. 02 — static glance-geometry drawing. No animation: the number is the point. -->
-    <figure class="figure wrap">
-      <figcaption class="figure__cap">
-        <span class="fig">FIG. 02</span>
-        <span>GLANCE GEOMETRY — DISTANCE COVERED DURING A 2.0 s OFF-ROAD GLANCE AT 55 MPH (NHTSA)</span>
-      </figcaption>
-      <div class="figure__body">
-        <svg class="glancefig" viewBox="0 0 960 200" role="img" aria-label="Engineering drawing: at 55 miles per hour, a car travels 161 feet during a 2 second glance away from the road — shown as a dimension line between the car's position at 0 seconds and at 2 seconds.">
-          <!-- road -->
-          <line x1="20" y1="120" x2="940" y2="120" class="gf-road" />
-          <line x1="20" y1="150" x2="940" y2="150" class="gf-road" />
-          <g class="gf-dashes">
-            <line x1="40" y1="135" x2="80" y2="135" /><line x1="120" y1="135" x2="160" y2="135" />
-            <line x1="200" y1="135" x2="240" y2="135" /><line x1="280" y1="135" x2="320" y2="135" />
-            <line x1="360" y1="135" x2="400" y2="135" /><line x1="440" y1="135" x2="480" y2="135" />
-            <line x1="520" y1="135" x2="560" y2="135" /><line x1="600" y1="135" x2="640" y2="135" />
-            <line x1="680" y1="135" x2="720" y2="135" /><line x1="760" y1="135" x2="800" y2="135" />
-            <line x1="840" y1="135" x2="880" y2="135" />
-          </g>
-          <!-- car at t=0 (outline) -->
-          <g class="gf-car gf-car--ghost" transform="translate(60,122)">
-            <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
-            <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
-          </g>
-          <text x="88" y="112" class="gf-note">t = 0.0 s — eyes leave road</text>
-          <!-- car at t=2 (filled) -->
-          <g class="gf-car gf-car--solid" transform="translate(840,122)">
-            <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
-            <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
-          </g>
-          <text x="830" y="112" class="gf-note" text-anchor="end">t = 2.0 s — eyes return</text>
-          <!-- dimension line -->
-          <line x1="90" y1="60" x2="90" y2="100" class="gf-ext" />
-          <line x1="869" y1="60" x2="869" y2="100" class="gf-ext" />
-          <line x1="90" y1="70" x2="360" y2="70" class="gf-dimline" />
-          <line x1="600" y1="70" x2="869" y2="70" class="gf-dimline" />
-          <path d="M90 70 L102 65 L102 75 Z" class="gf-arrow" />
-          <path d="M869 70 L857 65 L857 75 Z" class="gf-arrow" />
-          <text x="480" y="75" class="gf-dim" text-anchor="middle">161 ft — driven blind</text>
-        </svg>
-      </div>
-    </figure>
-  </section>
-
-  <!-- ============================ MODES ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 03 — OPERATING MODES</span></div>
-  <section class="section" id="modes">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 class="h2">Buy the hardware once.<br />Change what it protects with a tap.</h2>
-        <p class="section__lede">
-          The same $150 device runs three different products. Switch modes remotely from
-          the iOS app — no new hardware, no reinstall, no truck roll.
-        </p>
-      </div>
-
-      <div class="modes" id="modesPanel" data-mode="drive">
-        <div class="modes__tabs" role="tablist" aria-label="Device modes">
-          <button class="mtab is-active" role="tab" aria-selected="true" data-mode="drive">
-            <span class="mtab__id">MODE A</span>
-            <span class="mtab__name">Drive</span>
-            <span class="mtab__sub">Driver monitoring</span>
-          </button>
-          <button class="mtab" role="tab" aria-selected="false" data-mode="care">
-            <span class="mtab__id">MODE B</span>
-            <span class="mtab__name">Care</span>
-            <span class="mtab__sub">Fall &amp; wellbeing</span>
-          </button>
-          <button class="mtab" role="tab" aria-selected="false" data-mode="watch">
-            <span class="mtab__id">MODE C</span>
-            <span class="mtab__name">Watch</span>
-            <span class="mtab__sub">Home security</span>
-          </button>
-        </div>
-
-        <div class="modes__body">
-          <div class="modes__text">
-            <p class="modes__for" id="modeFor">In the car, for a teen or a tired commuter.</p>
-            <table class="modes__table">
-              <caption class="sr-only">What this mode watches for and how it responds</caption>
-              <tbody id="modeRows"></tbody>
-            </table>
-            <p class="modes__alert">
-              <span class="modes__alert-k">SAMPLE ALERT</span>
-              <span id="modeAlert">“Eyes off road 2.1 s — nudge sent to driver, notice sent to you.”</span>
-            </p>
-          </div>
-
-          <!-- per-mode field clip slot -->
-          <figure class="vslot vslot--small">
-            <figcaption class="vslot__bar">
-              <span class="fig">FIG. 03</span>
-              <span class="vslot__name" id="modeClipName">FIELD CLIP — DRIVE MODE</span>
-              <span class="vslot__spec"><code id="modeClipFile">assets/demo-drive.mp4</code></span>
-            </figcaption>
-            <div class="vslot__frame">
-              <span class="cal cal--tl" aria-hidden="true"></span>
-              <span class="cal cal--br" aria-hidden="true"></span>
-              <!-- Drop per-mode clips at assets/demo-drive.mp4 / demo-care.mp4 / demo-watch.mp4 -->
-              <video class="vslot__video" id="modeVideo" controls preload="metadata" playsinline>
-                <source id="modeVideoSrc" src="assets/demo-drive.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ PIPELINE ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 04 — HOW IT SEES</span></div>
-  <section class="section" id="pipeline">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 class="h2">A fused perception stack,<br />running entirely on a Raspberry&nbsp;Pi&nbsp;5.</h2>
-        <p class="section__lede">
-          Four signals computed together, dozens of times a second, each drawn from the
-          human-factors and computer-vision literature — not guesswork.
-        </p>
-      </div>
-
-      <!-- FIG. 04 — signal chain -->
-      <figure class="figure">
-        <figcaption class="figure__cap">
-          <span class="fig">FIG. 04</span>
-          <span>PERCEPTION SIGNAL CHAIN — ALL STAGES ON-DEVICE</span>
-        </figcaption>
-        <div class="chain">
-          <div class="chain__stage chain__stage--io">
-            <span class="chain__id">IN</span>
-            <span class="chain__name">Lens</span>
-            <span class="chain__desc">Raw frames, held in memory only</span>
-          </div>
-          <span class="chain__link" aria-hidden="true"></span>
-          <div class="chain__group">
-            <div class="chain__stage">
-              <span class="chain__id">CH·1</span>
-              <span class="chain__name">Gaze</span>
-              <span class="chain__desc">Head pose fused with iris position — road, mirror, lap, or phone</span>
-            </div>
-            <div class="chain__stage">
-              <span class="chain__id">CH·2</span>
-              <span class="chain__name">Drowsiness</span>
-              <span class="chain__desc">PERCLOS eye-closure scoring, the human-factors standard for microsleep</span>
-            </div>
-            <div class="chain__stage">
-              <span class="chain__id">CH·3</span>
-              <span class="chain__name">Attention</span>
-              <span class="chain__desc">NHTSA glance budgets — flags a look the road can't afford</span>
-            </div>
-            <div class="chain__stage">
-              <span class="chain__id">CH·4</span>
-              <span class="chain__name">Objects</span>
-              <span class="chain__desc">YOLO detection picks the phone out of the frame, mid-text</span>
-            </div>
-          </div>
-          <span class="chain__link" aria-hidden="true"></span>
-          <div class="chain__stage chain__stage--io">
-            <span class="chain__id">OUT</span>
-            <span class="chain__name">Alert</span>
-            <span class="chain__desc">One event record. Frames already discarded</span>
-          </div>
-        </div>
-      </figure>
-
-      <!-- benchmark: a printed table, not animated bars -->
-      <figure class="figure">
-        <figcaption class="figure__cap">
-          <span class="fig">TBL. 01</span>
-          <span>HEAD-TO-HEAD — SAME CLIPS, SCORED THE SAME WAY<sup>†</sup></span>
-        </figcaption>
-        <table class="btable">
-          <thead>
-            <tr><th scope="col">Stack</th><th scope="col">Detection quality index</th><th scope="col" class="btable__num">Score</th></tr>
-          </thead>
-          <tbody>
-            <tr class="btable__us">
-              <th scope="row">Argus</th>
-              <td><span class="btable__bar" style="--w: 94%"></span></td>
-              <td class="btable__num">94</td>
-            </tr>
-            <tr>
-              <th scope="row">openpilot DM (comma.ai)</th>
-              <td><span class="btable__bar" style="--w: 88%"></span></td>
-              <td class="btable__num">88</td>
-            </tr>
-            <tr>
-              <th scope="row">Baseline open-source DMS</th>
-              <td><span class="btable__bar" style="--w: 79%"></span></td>
-              <td class="btable__num">79</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="figure__foot">† Higher is better. Illustrative of our benchmarking method — substitute published run figures before launch.</p>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ============================ PRIVACY ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 05 — PRIVACY ARCHITECTURE</span></div>
-  <section class="section" id="privacy">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 class="h2">It sees everything.<br />It sends nothing but the alert.</h2>
-      </div>
-
-      <!-- FIG. 05 — the egress boundary, drawn as a record crossing a wall -->
-      <figure class="figure">
-        <figcaption class="figure__cap">
-          <span class="fig">FIG. 05</span>
-          <span>EGRESS BOUNDARY — WHAT EXISTS WHERE</span>
-        </figcaption>
-        <div class="egress">
-          <div class="egress__side egress__side--device">
-            <span class="egress__tag">ON THE DEVICE — COMPUTED, THEN DISCARDED</span>
-            <ul class="egress__list">
-              <li>Raw frames <em>held in memory only</em></li>
-              <li>Faces <em>never written to disk</em></li>
-              <li>Gaze vectors · head pose <em>per frame</em></li>
-              <li>PERCLOS score <em>rolling window</em></li>
-              <li>Object detections <em>per frame</em></li>
-            </ul>
-          </div>
-          <div class="egress__wall" aria-hidden="true">
-            <span class="egress__walllabel">THE ONLY THING THAT CROSSES</span>
-          </div>
-          <div class="egress__side egress__side--cloud">
-            <span class="egress__tag">TO THE CLOUD — ONE EVENT RECORD</span>
-            <pre class="egress__record"><code>{
-  "t":      "18:42:07",
-  "mode":   "drive",
-  "event":  "eyes_off_road",
-  "frames_uploaded": 0
-}</code></pre>
-            <p class="egress__note">No video. No faces. No footage to leak, subpoena, or breach.</p>
-          </div>
-        </div>
-      </figure>
-
-      <p class="pull">
-        This is what lets Argus sidestep the privacy objection that kills consumer
-        cameras — and the cloud-compute bill that kills their margins.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================ SYSTEM ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 06 — BUILD STATUS</span></div>
-  <section class="section" id="system">
+  <!-- ============================ DEVICE ============================ -->
+  <section class="section" id="device">
     <div class="wrap grid-2 grid-2--loose">
       <div>
-        <h2 class="h2">A complete product,<br />working end to end — today.</h2>
-        <p class="section__lede">Not a mockup, not a pitch deck. Every layer exists and runs.</p>
-        <table class="buildtable">
-          <caption class="sr-only">Build status of each system layer</caption>
-          <tbody>
-            <tr><th scope="row">Device firmware</th><td>Perception stack on the Pi 5</td><td class="buildtable__st">WORKING</td></tr>
-            <tr><th scope="row">Cloud backend</th><td>Accounts, pairing, alert delivery</td><td class="buildtable__st">WORKING</td></tr>
-            <tr><th scope="row">Native iOS app</th><td>Live status, remote mode switch</td><td class="buildtable__st">WORKING</td></tr>
-            <tr><th scope="row">Enclosure</th><td>3D-printed, dash &amp; wall mount</td><td class="buildtable__st">REV C</td></tr>
-            <tr><th scope="row">Deploy</th><td><code>argus deploy --all</code> · raw hardware to product in &lt; 1 h</td><td class="buildtable__st">WORKING</td></tr>
-          </tbody>
-        </table>
+        <h2 class="h2">One small box.<br />The whole system<br />is inside it.</h2>
+        <p class="section__lede">
+          A Raspberry&nbsp;Pi&nbsp;5, a camera module and a printed enclosure. The models
+          run on the Pi itself, so the camera keeps working whether or not it can reach
+          the internet — it just can't text you until it can.
+        </p>
+
+        <ul class="box">
+          <li><span class="box__k">Argus unit</span><span class="box__v">Pi 5 + camera, assembled and flashed</span></li>
+          <li><span class="box__k">Enclosure</span><span class="box__v">PETG, printed, Rev C</span></li>
+          <li><span class="box__k">Mounts</span><span class="box__v">Dash pad, wall plate, ¼-20 for any tripod</span></li>
+          <li><span class="box__k">Power</span><span class="box__v">USB-C, 12&nbsp;V car adapter included</span></li>
+          <li><span class="box__k">App</span><span class="box__v">iOS, free with the device</span></li>
+        </ul>
       </div>
 
-      <!-- FIG. 06 — enclosure engineering drawing -->
       <figure class="figure figure--tight">
         <figcaption class="figure__cap">
-          <span class="fig">FIG. 06</span>
-          <span>ENCLOSURE — REV C, FDM-PRINTED, FRONT &amp; SIDE</span>
+          <span class="fig">FIG. 01</span>
+          <span>Enclosure, Rev C — front and side</span>
         </figcaption>
         <div class="figure__body">
           <svg class="encfig" viewBox="0 0 520 330" role="img" aria-label="Engineering drawing of the Argus enclosure: front view 95 by 70 millimeters with a 12 millimeter camera aperture, side view 30 millimeters deep with a quarter-inch mount boss.">
-            <!-- front view -->
             <rect x="60" y="50" width="190" height="140" rx="10" class="enc-body" />
             <circle cx="155" cy="105" r="24" class="enc-detail" />
             <circle cx="155" cy="105" r="12" class="enc-detail" />
@@ -420,20 +169,16 @@
             <circle cx="90" cy="168" r="4" class="enc-detail" />
             <text x="102" y="172" class="enc-note">status LED</text>
             <text x="60" y="40" class="enc-label">FRONT</text>
-            <!-- front dims: width -->
             <line x1="60" y1="210" x2="250" y2="210" class="enc-dimline" />
             <path d="M60 210 L70 206 L70 214 Z" class="enc-arrow" />
             <path d="M250 210 L240 206 L240 214 Z" class="enc-arrow" />
             <text x="155" y="226" class="enc-dim" text-anchor="middle">95 mm</text>
-            <!-- front dims: height -->
             <line x1="270" y1="50" x2="270" y2="190" class="enc-dimline" />
             <path d="M270 50 L266 60 L274 60 Z" class="enc-arrow" />
             <path d="M270 190 L266 180 L274 180 Z" class="enc-arrow" />
             <text x="280" y="124" class="enc-dim">70 mm</text>
-            <!-- aperture callout -->
             <line x1="170" y1="85" x2="205" y2="42" class="enc-ext" />
             <text x="210" y="38" class="enc-note">Ø12 CSI aperture</text>
-            <!-- side view -->
             <rect x="360" y="50" width="60" height="140" rx="8" class="enc-body" />
             <rect x="372" y="190" width="36" height="16" class="enc-detail" />
             <text x="360" y="40" class="enc-label">SIDE</text>
@@ -444,12 +189,10 @@
             <line x1="390" y1="206" x2="440" y2="238" class="enc-ext" />
             <text x="356" y="252" class="enc-note">¼-20 mount boss</text>
             <text x="356" y="264" class="enc-note">dash · wall · tripod</text>
-            <!-- vents -->
             <line x1="376" y1="70" x2="404" y2="70" class="enc-vent" />
             <line x1="376" y1="80" x2="404" y2="80" class="enc-vent" />
             <line x1="376" y1="90" x2="404" y2="90" class="enc-vent" />
             <text x="430" y="84" class="enc-note">passive vents</text>
-            <!-- title block -->
             <g class="enc-titleblock">
               <rect x="60" y="270" width="360" height="40" />
               <line x1="200" y1="270" x2="200" y2="310" />
@@ -463,93 +206,363 @@
             </g>
           </svg>
         </div>
+        <p class="figure__foot">Dimensions are Rev C as printed. Final production tolerances may differ slightly.</p>
       </figure>
-    </div>
-
-    <!-- VLM tier -->
-    <div class="wrap">
-      <div class="vlm">
-        <div>
-          <span class="vlm__tag">OPTIONAL — FRONTIER TIER</span>
-          <h3 class="vlm__title">Add human-level judgment. Keep the same hardware.</h3>
-          <p class="vlm__desc">
-            Switch on the frontier vision-language tier and the device gains scene
-            understanding — telling a phone in your hand from a GPS on the mount. As
-            vision-language models improve, Argus improves with them. No new device,
-            ever.
-          </p>
-        </div>
-        <table class="vlm__table">
-          <caption class="sr-only">Example judgments by the vision-language tier</caption>
-          <thead><tr><th scope="col">Scene</th><th scope="col">Judgment</th></tr></thead>
-          <tbody>
-            <tr><td>GPS mounted on dash</td><td class="vlm__ok">allowed</td></tr>
-            <tr><td>Phone held in hand</td><td class="vlm__no">flagged</td></tr>
-            <tr><td>Sunglasses, eyes tracked</td><td class="vlm__ok">allowed</td></tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </section>
 
-  <!-- ============================ PRICING ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 07 — WHO IT'S FOR &amp; PRICING</span></div>
-  <section class="section" id="pricing">
+  <div class="dim" aria-hidden="true"><span>WHAT IT WATCHES</span></div>
+
+  <!-- ============================ WHAT IT WATCHES ============================ -->
+  <section class="section" id="watches">
     <div class="wrap">
       <div class="section__head">
-        <h2 class="h2">The device at an accessible price.<br />Then monthly peace of mind.</h2>
+        <h2 class="h2">Tell it what to watch for.<br />It watches for that.</h2>
+        <p class="section__lede">
+          Three profiles cover what most people buy it for. Switch between them from the
+          app — the same device, pointed at a different job, with no new hardware.
+        </p>
       </div>
 
-      <div class="who">
-        <div class="who__item">
-          <span class="who__k">Parents of teen drivers</span>
-          <p>The first three years behind the wheel are the most dangerous. Now something's watching with them.</p>
+      <div class="modes" id="modesPanel" data-mode="drive">
+        <div class="modes__tabs" role="tablist" aria-label="Watch profiles">
+          <button class="mtab is-active" role="tab" aria-selected="true" aria-controls="modeBody" id="tab-drive" data-mode="drive">
+            <span class="mtab__name">Drive</span>
+            <span class="mtab__sub">In the car</span>
+          </button>
+          <button class="mtab" role="tab" aria-selected="false" aria-controls="modeBody" id="tab-care" data-mode="care">
+            <span class="mtab__name">Care</span>
+            <span class="mtab__sub">In the house</span>
+          </button>
+          <button class="mtab" role="tab" aria-selected="false" aria-controls="modeBody" id="tab-watch" data-mode="watch">
+            <span class="mtab__name">Watch</span>
+            <span class="mtab__sub">At the door</span>
+          </button>
         </div>
-        <div class="who__item">
-          <span class="who__k">Adult children of aging parents</span>
-          <p>Know they're okay — without a camera in the house that anyone could ever watch.</p>
+
+        <div class="modes__body" id="modeBody" role="tabpanel" aria-labelledby="tab-drive" tabindex="0">
+          <div class="modes__text">
+            <p class="modes__for" id="modeFor">For a teen driver, or anyone driving tired.</p>
+            <table class="modes__table">
+              <caption class="sr-only">What this profile watches for and how it responds</caption>
+              <tbody id="modeRows"></tbody>
+            </table>
+          </div>
+
+          <!-- what actually lands on your phone -->
+          <div class="phone">
+            <div class="phone__screen">
+              <span class="phone__time" id="phoneTime">6:42</span>
+              <div class="phone__notif">
+                <svg class="phone__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#argus-mark" /></svg>
+                <div class="phone__text">
+                  <span class="phone__app">Argus<span class="phone__ago">now</span></span>
+                  <strong class="phone__head" id="phoneHead">Eyes off road — 2.1 s</strong>
+                  <span class="phone__body" id="phoneBody">Nudge sent in the car. Car unit, Drive profile.</span>
+                </div>
+              </div>
+            </div>
+            <p class="phone__cap">What arrives on your phone. No video attached — there isn't any.</p>
+          </div>
         </div>
-        <div class="who__item">
-          <span class="who__k">Small commercial fleets</span>
-          <p>Lower insurance premiums with monitoring drivers will actually accept.</p>
+      </div>
+
+      <!-- plain-language configuration -->
+      <div class="vlm">
+        <div>
+          <h3 class="vlm__title">Need something the profiles don't cover? Describe it.</h3>
+          <p class="vlm__desc">
+            Type what you want watched in plain language — “tell me if the dog gets on the
+            couch”, “let me know if Dad hasn't come out of his room by ten” — and Argus
+            turns it into a working configuration. The frontier vision tier gives it the
+            judgment to tell a phone in a hand from a GPS on the mount, and it gets better
+            as those models do. Same device, no replacement.
+          </p>
         </div>
+        <table class="vlm__table">
+          <caption class="sr-only">Examples of judgments the vision tier makes</caption>
+          <thead><tr><th scope="col">What it sees</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><td>GPS mounted on the dash</td><td class="vlm__ok">lets it go</td></tr>
+            <tr><td>Phone held in a hand</td><td class="vlm__no">alerts you</td></tr>
+            <tr><td>Sunglasses, eyes still tracked</td><td class="vlm__ok">lets it go</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- why the threshold is what it is -->
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 02</span>
+          <span>Why two seconds is the threshold — distance covered at 55 mph</span>
+        </figcaption>
+        <div class="figure__body">
+          <svg class="glancefig" viewBox="0 0 960 200" role="img" aria-label="Engineering drawing: at 55 miles per hour, a car travels 161 feet during a 2 second glance away from the road, shown as a dimension line between the car's position at 0 seconds and at 2 seconds.">
+            <line x1="20" y1="120" x2="940" y2="120" class="gf-road" />
+            <line x1="20" y1="150" x2="940" y2="150" class="gf-road" />
+            <g class="gf-dashes">
+              <line x1="40" y1="135" x2="80" y2="135" /><line x1="120" y1="135" x2="160" y2="135" />
+              <line x1="200" y1="135" x2="240" y2="135" /><line x1="280" y1="135" x2="320" y2="135" />
+              <line x1="360" y1="135" x2="400" y2="135" /><line x1="440" y1="135" x2="480" y2="135" />
+              <line x1="520" y1="135" x2="560" y2="135" /><line x1="600" y1="135" x2="640" y2="135" />
+              <line x1="680" y1="135" x2="720" y2="135" /><line x1="760" y1="135" x2="800" y2="135" />
+              <line x1="840" y1="135" x2="880" y2="135" />
+            </g>
+            <g class="gf-car gf-car--ghost" transform="translate(60,122)">
+              <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
+              <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
+            </g>
+            <text x="88" y="112" class="gf-note">t = 0.0 s — eyes leave the road</text>
+            <g class="gf-car gf-car--solid" transform="translate(840,122)">
+              <path d="M0 10 L8 10 L14 2 L38 2 L46 10 L58 10 L58 16 L0 16 Z" />
+              <circle cx="14" cy="16" r="4" /><circle cx="45" cy="16" r="4" />
+            </g>
+            <text x="830" y="112" class="gf-note" text-anchor="end">t = 2.0 s — eyes come back</text>
+            <line x1="90" y1="60" x2="90" y2="100" class="gf-ext" />
+            <line x1="869" y1="60" x2="869" y2="100" class="gf-ext" />
+            <line x1="90" y1="70" x2="360" y2="70" class="gf-dimline" />
+            <line x1="600" y1="70" x2="869" y2="70" class="gf-dimline" />
+            <path d="M90 70 L102 65 L102 75 Z" class="gf-arrow" />
+            <path d="M869 70 L857 65 L857 75 Z" class="gf-arrow" />
+            <text x="480" y="75" class="gf-dim" text-anchor="middle">161 ft driven blind</text>
+          </svg>
+        </div>
+        <p class="figure__foot">Two seconds is the NHTSA glance budget. Argus alerts at the moment it is spent, not after.</p>
+      </figure>
+    </div>
+  </section>
+
+  <div class="dim" aria-hidden="true"><span>HOW IT SEES</span></div>
+
+  <!-- ============================ PIPELINE + PRIVACY ============================ -->
+  <section class="section" id="privacy">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">Four signals, computed together,<br />dozens of times a second.</h2>
+        <p class="section__lede">
+          Every stage runs on the Pi. Frames are read into memory, scored, and dropped —
+          they are never written to disk, and there is no upload step to turn off.
+        </p>
+      </div>
+
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 03</span>
+          <span>Signal chain — every stage on the device</span>
+        </figcaption>
+        <div class="chain">
+          <div class="chain__stage chain__stage--io">
+            <span class="chain__id">IN</span>
+            <span class="chain__name">Lens</span>
+            <span class="chain__desc">Frames, held in memory only</span>
+          </div>
+          <span class="chain__link" aria-hidden="true"></span>
+          <div class="chain__group">
+            <div class="chain__stage">
+              <span class="chain__name">Gaze</span>
+              <span class="chain__desc">Head pose and iris position together — road, mirror, lap, or phone</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__name">Drowsiness</span>
+              <span class="chain__desc">PERCLOS eye-closure scoring, the standard measure for microsleep</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__name">Attention</span>
+              <span class="chain__desc">Glance budgets, so a long look away is caught as it happens</span>
+            </div>
+            <div class="chain__stage">
+              <span class="chain__name">Objects</span>
+              <span class="chain__desc">Picks the phone out of the frame, mid-text</span>
+            </div>
+          </div>
+          <span class="chain__link" aria-hidden="true"></span>
+          <div class="chain__stage chain__stage--io">
+            <span class="chain__id">OUT</span>
+            <span class="chain__name">Alert</span>
+            <span class="chain__desc">One short record. Frames already gone</span>
+          </div>
+        </div>
+      </figure>
+
+      <h3 class="h2 h2--sub">It sees everything.<br />It sends nothing but the alert.</h3>
+
+      <figure class="figure">
+        <figcaption class="figure__cap">
+          <span class="fig">FIG. 04</span>
+          <span>What exists where</span>
+        </figcaption>
+        <div class="egress">
+          <div class="egress__side egress__side--device">
+            <span class="egress__tag">On the device — computed, then dropped</span>
+            <ul class="egress__list">
+              <li>Raw frames <em>memory only</em></li>
+              <li>Faces <em>never written to disk</em></li>
+              <li>Gaze and head pose <em>per frame</em></li>
+              <li>PERCLOS score <em>rolling window</em></li>
+              <li>Object detections <em>per frame</em></li>
+            </ul>
+          </div>
+          <div class="egress__wall" aria-hidden="true">
+            <span class="egress__walllabel">THE ONLY THING THAT CROSSES</span>
+          </div>
+          <div class="egress__side egress__side--cloud">
+            <span class="egress__tag">To your phone — one event record</span>
+            <pre class="egress__record"><code>{
+  "t":      "18:42:07",
+  "unit":   "car",
+  "event":  "eyes_off_road",
+  "frames_uploaded": 0
+}</code></pre>
+            <p class="egress__note">No video. No faces. Nothing to leak, subpoena, or breach, because nothing was kept.</p>
+          </div>
+        </div>
+      </figure>
+
+      <p class="pull">
+        This is the part people check first. A camera in your parent's kitchen is only
+        acceptable if nobody — including us — can ever watch it.
+      </p>
+    </div>
+  </section>
+
+  <div class="dim" aria-hidden="true"><span>SETUP</span></div>
+
+  <!-- ============================ SETUP ============================ -->
+  <section class="section" id="setup">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">Out of the box and watching<br />in under an hour.</h2>
+        <p class="section__lede">
+          The unit ships assembled and flashed. There is nothing to compile and no model
+          to download.
+        </p>
+      </div>
+
+      <ol class="steps">
+        <li class="steps__item">
+          <span class="steps__n">1</span>
+          <h3 class="steps__h">Mount it and give it power</h3>
+          <p>Dash pad for the car, wall plate for a room, ¼-20 boss for any tripod you already own. USB-C in, status LED on.</p>
+        </li>
+        <li class="steps__item">
+          <span class="steps__n">2</span>
+          <h3 class="steps__h">Pair it in the app</h3>
+          <p>Open the iOS app, scan the code on the back, join it to your Wi-Fi. Name the unit — “Car”, “Mom's kitchen” — and it shows up on your home screen.</p>
+        </li>
+        <li class="steps__item">
+          <span class="steps__n">3</span>
+          <h3 class="steps__h">Pick a profile, or describe the job</h3>
+          <p>Choose Drive, Care or Watch, then adjust sensitivity. For anything else, type what you want watched and let Argus configure itself.</p>
+        </li>
+      </ol>
+
+      <p class="steps__note">
+        Building your own from parts instead? <code>argus deploy --all</code> takes raw
+        hardware to a working unit in a single command.
+      </p>
+    </div>
+  </section>
+
+  <div class="dim" aria-hidden="true"><span>PRICE</span></div>
+
+  <!-- ============================ PRICE ============================ -->
+  <section class="section" id="price">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="h2">$150 for the device.<br />$12 a month for the alerts.</h2>
+        <p class="section__lede">
+          You are paying us for the peace of mind, not for the pixels — because we never
+          have the pixels.
+        </p>
       </div>
 
       <table class="pricetable">
-        <caption class="sr-only">Pricing: hardware and subscription</caption>
+        <caption class="sr-only">What the device includes and what the subscription adds</caption>
         <thead>
           <tr>
             <th scope="col" class="pricetable__blank"></th>
-            <th scope="col"><span class="pricetable__plan">Hardware</span><span class="pricetable__price">$150 <em>once</em></span></th>
-            <th scope="col"><span class="pricetable__plan">Subscription</span><span class="pricetable__price">$12 <em>/ month</em></span></th>
+            <th scope="col"><span class="pricetable__plan">Device</span><span class="pricetable__price">$150 <em>once</em></span></th>
+            <th scope="col"><span class="pricetable__plan">Alerts</span><span class="pricetable__price">$12 <em>a month</em></span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">The Argus device + enclosure</th><td>●</td><td>—</td></tr>
-          <tr><th scope="row">All three modes, unlocked</th><td>●</td><td>—</td></tr>
-          <tr><th scope="row">On-device inference, forever</th><td>●</td><td>—</td></tr>
-          <tr><th scope="row">Instant cloud alerts to your phone</th><td>—</td><td>●</td></tr>
-          <tr><th scope="row">Full event history &amp; timeline</th><td>—</td><td>●</td></tr>
-          <tr><th scope="row">Multi-device &amp; fleet dashboards</th><td>—</td><td>●</td></tr>
-          <tr><th scope="row">Frontier VLM judgment tier</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">The unit, enclosure and mounts</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">All three profiles</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">On-device detection, forever</th><td>●</td><td>—</td></tr>
+          <tr><th scope="row">Alerts pushed to your phone</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">Event history and timeline</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">More than one unit, and fleet views</th><td>—</td><td>●</td></tr>
+          <tr><th scope="row">Plain-language setup and the vision tier</th><td>—</td><td>●</td></tr>
         </tbody>
       </table>
-      <p class="pricenote">Hardware at an accessible margin. Recurring revenue for the peace of mind — not the pixels.</p>
+      <p class="pricenote">Stop paying and the device keeps detecting. It just stops being able to reach you.</p>
+
+      <div class="who">
+        <div class="who__item">
+          <span class="who__k">Parents of a new driver</span>
+          <p>The first three years behind the wheel are the most dangerous ones. This rides along for them.</p>
+        </div>
+        <div class="who__item">
+          <span class="who__k">Anyone with a parent living alone</span>
+          <p>Know they're okay without putting a camera in their house that someone could watch.</p>
+        </div>
+        <div class="who__item">
+          <span class="who__k">Small fleets</span>
+          <p>Driver monitoring your drivers will actually agree to, because there is no footage of them.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============================ RESERVE ============================ -->
-  <div class="dim" aria-hidden="true"><span>SEC. 08 — RESERVE</span></div>
-  <section class="section reserve" id="reserve">
-    <div class="wrap reserve__wrap">
-      <h2 class="h2">Watchfulness is becoming software.<br />We're building the device it can be trusted to run on.</h2>
-      <form class="reserve__form" id="reserveForm" novalidate>
-        <label class="sr-only" for="reserveEmail">Email address</label>
-        <input class="reserve__input" id="reserveEmail" type="email" placeholder="you@email.com" autocomplete="email" required />
-        <button class="btn btn--solid" type="submit">Reserve a device</button>
-      </form>
-      <p class="reserve__msg" id="reserveMsg" role="status" aria-live="polite"></p>
-      <p class="reserve__fine">No charge today. We'll email you when your unit is ready to ship.</p>
+  <section class="reserve" id="reserve">
+    <div class="wrap reserve__grid">
+      <div class="reserve__main">
+        <h2 class="h2">Reserve a device.</h2>
+        <p class="reserve__lede">
+          The first run is limited by how fast we can print and assemble enclosures.
+          Reserving costs nothing and holds your place in it.
+        </p>
+        <form class="reserve__form" id="reserveForm" novalidate>
+          <label class="sr-only" for="reserveEmail">Email address</label>
+          <input class="reserve__input" id="reserveEmail" type="email" placeholder="you@email.com" autocomplete="email" required />
+          <button class="btn btn--solid" type="submit">Reserve a device</button>
+        </form>
+        <p class="reserve__msg" id="reserveMsg" role="status" aria-live="polite"></p>
+
+        <ol class="reserve__next">
+          <li><span>Today</span> You give us an email. No card, no charge, nothing to cancel.</li>
+          <li><span>When your unit is built</span> We email you to confirm the order and take payment.</li>
+          <li><span>After it ships</span> Pair it, pick a profile, and the subscription starts from that day.</li>
+        </ol>
+      </div>
+
+      <div class="faq">
+        <details class="faq__item">
+          <summary>Am I being charged now?</summary>
+          <p>No. Reserving puts you on the list and nothing else. You pay when we have a unit built for you and you confirm you still want it.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Do I have to subscribe?</summary>
+          <p>Only to receive alerts on your phone. The detection itself runs on the device whether you subscribe or not — but a camera that notices something and can't tell you isn't much use, so most people do.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Can you or anyone else see my video?</summary>
+          <p>No, and not because of a policy. The frames are scored in memory and dropped; they are never written to disk and never sent anywhere. The only thing that leaves is a short text record of what happened and when.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Does it work without internet?</summary>
+          <p>Detection does — it is all on-device. In the car it will still sound the in-cab nudge with no signal at all. Pushing the alert to your phone needs a connection, and it sends it as soon as it has one.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Can one device cover more than one job?</summary>
+          <p>One at a time. Switch a unit from Drive to Care from the app in a couple of seconds — people who want the car and the house covered at once buy two.</p>
+        </details>
+        <details class="faq__item">
+          <summary>What if it doesn't work for me?</summary>
+          <p>Send it back within 30 days of delivery for a full refund of the device, and we'll cancel the subscription the same day.</p>
+        </details>
+      </div>
     </div>
   </section>
 </main>
@@ -565,17 +578,19 @@
       </span>
     </div>
     <nav class="foot__links" aria-label="Footer">
-      <a href="#problem">Problem</a>
-      <a href="#modes">Modes</a>
-      <a href="#pipeline">How it sees</a>
+      <a href="#device">The device</a>
+      <a href="#watches">What it watches</a>
       <a href="#privacy">Privacy</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#setup">Setup</a>
+      <a href="#price">Price</a>
       <a href="#reserve">Reserve</a>
     </nav>
     <p class="foot__colophon">
-      Set in Archivo, Hanken Grotesk &amp; IBM Plex Mono · © 2026 Argus · No frame leaves the device.
+      © 2026 Argus. No frame leaves the device.
     </p>
   </div>
 </footer>
 
 <script src="script.js"></script>
+</body>
+</html>

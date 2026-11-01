@@ -1,8 +1,8 @@
 /* =========================================================================
-   Argus — engineering dossier
-   Aesthetic: the documentation of an optical instrument. Lab paper, ink,
-   one safety-orange signal, numbered figures, dimension-line dividers.
-   No decorative animation.
+   Argus — product site
+   A quiet paper page around one loud thing: the walkthrough. Lab white,
+   ink rules, one safety-orange signal, dark wells wherever the product
+   itself appears. No decorative animation.
    ========================================================================= */
 
 :root {
@@ -116,7 +116,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   font-variation-settings: "wdth" 110;
   font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em;
 }
-.nav__rev { font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--mid); }
 .nav__links { display: flex; gap: 1.5rem; margin-left: auto; font-family: var(--ff-mono); font-size: 0.78rem; }
 .nav__links a { color: var(--mid); text-decoration: none; }
 .nav__links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
@@ -124,62 +123,75 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 .nav__menu { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; margin-left: auto; }
 .nav__menu span { width: 22px; height: 2px; background: var(--ink); }
 
+.h2--sub { margin-top: clamp(2.5rem, 5vw, 4rem); }
+
 /* =========================================================================
-   HERO
+   HERO — the copy on the left, the walkthrough on the right
    ========================================================================= */
-.hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
-.hero__meta {
-  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  font-family: var(--ff-mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--mid);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 0.7rem;
+.hero { padding-top: clamp(2rem, 5vw, 3.75rem); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
 .hero__title {
   font-family: var(--ff-display);
-  font-variation-settings: "wdth" 122;
+  font-variation-settings: "wdth" 120;
   font-weight: 900;
-  font-size: clamp(2.7rem, 8vw, 6.2rem);
-  line-height: 0.95;
+  font-size: clamp(2.4rem, 5.4vw, 4.3rem);
+  line-height: 0.96;
   letter-spacing: -0.025em;
   text-transform: uppercase;
-  margin: clamp(1.5rem, 3.5vw, 2.5rem) 0;
 }
-.hero__row {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  gap: 2rem; flex-wrap: wrap;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+.hero__lede {
+  max-width: 48ch;
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  color: var(--mid);
+  border-left: 3px solid var(--signal);
+  padding-left: 1.1rem;
 }
-.hero__lede { max-width: 54ch; font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--mid); }
-.hero__lede { border-left: 3px solid var(--signal); padding-left: 1.1rem; }
-.hero__actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+/* the three numbers that decide the purchase */
+.hero__price {
+  display: flex; flex-wrap: wrap; gap: 0 clamp(1.5rem, 4vw, 2.75rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  padding-block: 0.85rem;
+  border-block: 1px solid var(--rule);
+}
+.hero__price dt {
+  font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid);
+}
+.hero__price dd {
+  font-family: var(--ff-display); font-variation-settings: "wdth" 112;
+  font-weight: 800; font-size: 1.15rem; line-height: 1.3;
+}
+.hero__price-ok { color: var(--ok); }
+.hero__actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: clamp(1.5rem, 3vw, 2rem); }
+.hero__fine { font-size: 0.85rem; color: var(--mid); margin-top: 0.9rem; max-width: 42ch; }
 
 /* =========================================================================
-   VIDEO SLOTS — styled as bench-test recordings
+   THE WALKTHROUGH — a portrait recording, framed like a bench capture
    ========================================================================= */
-.vslot { margin: 0; }
-.vslot__bar {
-  display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap;
-  font-family: var(--ff-mono); font-size: 0.7rem; letter-spacing: 0.06em;
+.demo { margin: 0; }
+.demo__bar {
+  display: flex; align-items: baseline; gap: 1rem;
+  font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 0.06em;
   color: var(--ink);
   border: 1.5px solid var(--ink); border-bottom: 0;
   background: var(--panel);
-  padding: 0.6rem 0.9rem;
+  padding: 0.55rem 0.8rem;
 }
-.vslot__name { font-weight: 600; }
-.vslot__spec { margin-left: auto; color: var(--mid); }
-.vslot__spec code { color: var(--signal); }
-.vslot__frame {
-  position: relative;
-  border: 1.5px solid var(--ink);
-  background: var(--screen);
+.demo__label { font-weight: 600; text-transform: uppercase; }
+.demo__time { margin-left: auto; color: var(--signal); }
+.demo__frame { position: relative; border: 1.5px solid var(--ink); background: var(--screen); }
+.demo__video {
+  display: block; width: 100%; aspect-ratio: 9 / 16;
+  background: var(--screen); object-fit: contain;
 }
-.vslot__video {
-  display: block; width: 100%; aspect-ratio: 16 / 9;
-  background:
-    var(--screen)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23101314'/%3E%3Cg fill='none' stroke='%232a2f31' stroke-width='1'%3E%3Cline x1='400' y1='185' x2='400' y2='265'/%3E%3Cline x1='360' y1='225' x2='440' y2='225'/%3E%3Ccircle cx='400' cy='225' r='28'/%3E%3C/g%3E%3Ctext x='400' y='300' text-anchor='middle' fill='%23697074' font-family='monospace' font-size='13'%3ENO SIGNAL — add your demo file to enable playback%3C/text%3E%3C/svg%3E")
-    center / cover no-repeat;
-}
+.demo__cap { font-size: 0.88rem; color: var(--mid); margin-top: 0.8rem; max-width: 36ch; }
+
 /* calibration checkers at the frame corners */
 .cal {
   position: absolute; width: 18px; height: 18px; z-index: 2; pointer-events: none;
@@ -189,8 +201,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 .cal--tr { top: 0; right: 0; }
 .cal--bl { bottom: 0; left: 0; }
 .cal--br { bottom: 0; right: 0; }
-
-.vslot--small .vslot__bar { font-size: 0.64rem; }
 
 /* =========================================================================
    SPEC STRIP — a datasheet row
@@ -265,42 +275,78 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 .gf-dim { font-family: var(--ff-mono); font-size: 13px; font-weight: 600; fill: var(--signal); }
 
 /* =========================================================================
-   MODES
+   WATCH PROFILES
    ========================================================================= */
 .modes { border: 1.5px solid var(--ink); background: var(--panel); }
 .modes__tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--ink); }
 .mtab {
-  display: flex; flex-direction: column; gap: 0.1rem; text-align: left;
+  display: flex; flex-direction: column; gap: 0.15rem;
+  padding: 0.9rem 1.1rem; text-align: left;
   background: var(--paper); border: 0; border-right: 1px solid var(--rule);
-  padding: 1rem 1.2rem; cursor: pointer;
-  font-family: inherit;
+  cursor: pointer; font: inherit; color: inherit;
 }
 .mtab:last-child { border-right: 0; }
 .mtab:hover { background: var(--panel); }
 .mtab.is-active { background: var(--panel); box-shadow: inset 0 -3px 0 var(--signal); }
-.mtab__id { font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.12em; color: var(--mid); }
-.mtab.is-active .mtab__id { color: var(--signal); }
 .mtab__name { font-family: var(--ff-display); font-variation-settings: "wdth" 112; font-weight: 800; font-size: 1.25rem; }
 .mtab__sub { font-size: 0.8rem; color: var(--mid); }
 
 .modes__body {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(1.5rem, 3.5vw, 3rem);
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
   padding: clamp(1.4rem, 3vw, 2.2rem);
   align-items: start;
 }
+.modes__body:focus-visible { outline: 2px solid var(--signal); outline-offset: -4px; }
 .modes__for { font-family: var(--ff-mono); font-size: 0.76rem; color: var(--signal); margin-bottom: 1rem; }
 .modes__table { width: 100%; border-collapse: collapse; }
 .modes__table td {
-  padding: 0.65rem 0.2rem;
-  border-top: 1px solid var(--rule);
-  font-size: 0.96rem;
   vertical-align: top;
+  padding: 0.85rem 0 0.85rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem; line-height: 1.5;
 }
 .modes__table tr:last-child td { border-bottom: 1px solid var(--rule); }
-.modes__table td:first-child { font-family: var(--ff-mono); font-size: 0.66rem; letter-spacing: 0.06em; color: var(--mid); width: 5.5em; padding-top: 0.85rem; white-space: nowrap; }
-.modes__alert { margin-top: 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.95rem; }
-.modes__alert-k { font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.12em; color: var(--signal); }
+.modes__table td:first-child {
+  font-family: var(--ff-mono); font-size: 0.66rem; letter-spacing: 0.06em;
+  color: var(--mid); width: 6em; padding-top: 0.95rem; padding-right: 1rem; white-space: nowrap;
+}
+
+/* =========================================================================
+   THE ALERT, AS IT ARRIVES — the whole product in one notification
+   ========================================================================= */
+.phone__screen {
+  position: relative;
+  background: var(--screen);
+  border: 1.5px solid var(--ink);
+  padding: 2.3rem 0.85rem 1.6rem;
+}
+.phone__time {
+  position: absolute; top: 0.75rem; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--ff-display); font-variation-settings: "wdth" 100;
+  font-weight: 600; font-size: 0.8rem;
+  color: color-mix(in srgb, #ffffff 55%, transparent);
+}
+.phone__notif {
+  display: flex; gap: 0.7rem; align-items: flex-start;
+  background: color-mix(in srgb, #ffffff 10%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 14%, transparent);
+  border-radius: 14px;
+  padding: 0.75rem 0.8rem;
+}
+.phone__icon { width: 26px; height: 26px; flex: none; color: color-mix(in srgb, #ffffff 78%, transparent); }
+.phone__text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
+.phone__app {
+  display: flex; gap: 0.5rem; align-items: baseline;
+  font-family: var(--ff-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #ffffff 55%, transparent);
+}
+.phone__ago { margin-left: auto; }
+.phone__head { font-size: 0.95rem; color: #ffffff; line-height: 1.3; font-weight: 600; }
+.phone__body { font-size: 0.85rem; color: color-mix(in srgb, #ffffff 68%, transparent); line-height: 1.45; }
+.phone__cap { font-size: 0.82rem; color: var(--mid); margin-top: 0.75rem; }
 
 /* =========================================================================
    FIG 04 — SIGNAL CHAIN
@@ -326,18 +372,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   border: 4px solid transparent; border-left: 6px solid var(--ink);
   transform: translateY(-50%);
 }
-
-/* =========================================================================
-   TBL 01 — BENCHMARK
-   ========================================================================= */
-.btable { width: 100%; border-collapse: collapse; }
-.btable th, .btable td { text-align: left; padding: 0.7rem 0.4rem; border-bottom: 1px solid var(--rule); }
-.btable thead th { font-family: var(--ff-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); font-weight: 500; border-bottom: 1.5px solid var(--ink); }
-.btable tbody th { font-weight: 600; font-size: 0.98rem; width: 16rem; }
-.btable__num { text-align: right !important; font-family: var(--ff-mono); font-size: 0.95rem; width: 4rem; }
-.btable__bar { display: block; height: 12px; width: var(--w); background: var(--rule-2); }
-.btable__us .btable__bar { background: var(--signal); }
-.btable__us th, .btable__us .btable__num { color: var(--signal); }
 
 /* =========================================================================
    FIG 05 — EGRESS BOUNDARY
@@ -386,13 +420,40 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 }
 
 /* =========================================================================
-   BUILD STATUS + ENCLOSURE
+   WHAT'S IN THE BOX
    ========================================================================= */
-.buildtable { width: 100%; border-collapse: collapse; margin-top: 1.6rem; }
-.buildtable th, .buildtable td { text-align: left; padding: 0.65rem 0.5rem 0.65rem 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
-.buildtable tbody th { font-weight: 700; font-size: 0.95rem; white-space: nowrap; padding-right: 1rem; }
-.buildtable td { color: var(--mid); font-size: 0.92rem; }
-.buildtable__st { font-family: var(--ff-mono); font-size: 0.62rem !important; letter-spacing: 0.1em; color: var(--ok) !important; text-align: right !important; white-space: nowrap; }
+.box { list-style: none; margin-top: clamp(1.5rem, 3vw, 2rem); border-top: 1.5px solid var(--ink); }
+.box li {
+  display: flex; gap: 1.5rem; align-items: baseline; justify-content: space-between;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--rule);
+}
+.box__k { font-weight: 700; font-size: 0.95rem; }
+.box__v { color: var(--mid); font-size: 0.92rem; text-align: right; }
+
+/* =========================================================================
+   SETUP — a real sequence, so it is numbered
+   ========================================================================= */
+.steps {
+  list-style: none; display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink); background: var(--panel);
+}
+.steps__item { padding: clamp(1.3rem, 3vw, 1.9rem); border-right: 1px solid var(--rule); }
+.steps__item:last-child { border-right: 0; }
+.steps__n {
+  display: block;
+  font-family: var(--ff-display); font-variation-settings: "wdth" 120;
+  font-weight: 900; font-size: 2.2rem; line-height: 1;
+  color: var(--signal);
+}
+.steps__h {
+  font-family: var(--ff-display); font-variation-settings: "wdth" 110;
+  font-weight: 800; font-size: 1.1rem; line-height: 1.15;
+  margin: 0.6rem 0 0.5rem;
+}
+.steps__item p { color: var(--mid); font-size: 0.93rem; line-height: 1.55; }
+.steps__note { font-size: 0.9rem; color: var(--mid); margin-top: 1.2rem; }
+.steps__note code { color: var(--signal); }
+
 
 .encfig { width: 100%; height: auto; display: block; background: var(--panel); border: 1.5px solid var(--ink); }
 .enc-body { fill: none; stroke: var(--ink); stroke-width: 2; }
@@ -416,7 +477,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   padding: clamp(1.6rem, 3.5vw, 2.5rem);
   align-items: center;
 }
-.vlm__tag { font-family: var(--ff-mono); font-size: 0.64rem; letter-spacing: 0.12em; color: var(--signal); font-weight: 600; }
 .vlm__title { font-family: var(--ff-display); font-variation-settings: "wdth" 112; font-weight: 800; font-size: clamp(1.3rem, 2.6vw, 1.8rem); margin: 0.6rem 0 0.8rem; line-height: 1.1; }
 .vlm__desc { color: var(--mid); max-width: 48ch; }
 .vlm__table { width: 100%; border-collapse: collapse; }
@@ -429,7 +489,7 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 /* =========================================================================
    PRICING
    ========================================================================= */
-.who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1.5px solid var(--ink); background: var(--panel); margin-bottom: clamp(2rem, 4vw, 3rem); }
+.who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1.5px solid var(--ink); background: var(--panel); margin-top: clamp(2rem, 4vw, 3rem); }
 .who__item { padding: 1.4rem 1.5rem 1.6rem; border-right: 1px solid var(--rule); }
 .who__item:last-child { border-right: 0; }
 .who__k { display: block; font-family: var(--ff-display); font-variation-settings: "wdth" 110; font-weight: 800; font-size: 1.08rem; margin-bottom: 0.5rem; }
@@ -450,18 +510,59 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
 /* =========================================================================
    RESERVE
    ========================================================================= */
-.reserve { border-top: 1.5px solid var(--ink); background: var(--panel); }
-.reserve__wrap { max-width: 720px; text-align: left; }
-.reserve__form { display: flex; gap: 0.7rem; margin-top: 2rem; flex-wrap: wrap; }
+.reserve {
+  border-top: 1.5px solid var(--ink);
+  background: var(--panel);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+.reserve__grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: start;
+}
+.reserve__lede { color: var(--mid); font-size: clamp(1.02rem, 1.5vw, 1.15rem); max-width: 44ch; margin-top: 1rem; }
+.reserve__form { display: flex; gap: 0.7rem; margin-top: 1.8rem; flex-wrap: wrap; }
 .reserve__input {
-  flex: 1; min-width: 240px;
+  flex: 1; min-width: 220px;
   background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0;
   padding: 0.85em 1.1em;
   font-family: var(--ff-mono); font-size: 0.9rem; color: var(--ink);
 }
 .reserve__input::placeholder { color: var(--mid); }
-.reserve__msg { min-height: 1.4em; margin-top: 0.9rem; font-family: var(--ff-mono); font-size: 0.8rem; color: var(--ok); }
-.reserve__fine { color: var(--mid); font-size: 0.85rem; margin-top: 0.4rem; }
+.reserve__msg { min-height: 1.4em; margin-top: 0.8rem; font-family: var(--ff-mono); font-size: 0.8rem; color: var(--ok); }
+
+/* what happens after you hand over an email */
+.reserve__next { list-style: none; margin-top: 1.5rem; border-top: 1.5px solid var(--ink); }
+.reserve__next li {
+  padding: 0.75rem 0; border-bottom: 1px solid var(--rule);
+  font-size: 0.93rem; color: var(--mid); line-height: 1.5;
+}
+.reserve__next span {
+  display: block;
+  font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 0.2rem;
+}
+
+/* ---------- questions people actually ask before reserving ---------- */
+.faq { border-top: 1.5px solid var(--ink); }
+.faq__item { border-bottom: 1px solid var(--rule); }
+.faq__item summary {
+  cursor: pointer; list-style: none;
+  padding: 0.95rem 2rem 0.95rem 0;
+  position: relative;
+  font-weight: 600; font-size: 0.98rem;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: ""; position: absolute; right: 0.5rem; top: 50%;
+  width: 10px; height: 10px;
+  border-right: 1.5px solid var(--signal); border-bottom: 1.5px solid var(--signal);
+  transform: translateY(-75%) rotate(45deg);
+}
+.faq__item[open] summary::after { transform: translateY(-25%) rotate(225deg); }
+.faq__item p {
+  color: var(--mid); font-size: 0.93rem; line-height: 1.6;
+  padding-bottom: 1.1rem; max-width: 54ch;
+}
 
 /* =========================================================================
    FOOTER
@@ -481,8 +582,11 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
    RESPONSIVE
    ========================================================================= */
 @media (max-width: 1000px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .demo { max-width: 400px; }
   .grid-2 { grid-template-columns: 1fr; }
   .modes__body { grid-template-columns: 1fr; }
+  .phone { max-width: 360px; }
   .spec__row { grid-template-columns: repeat(3, 1fr); }
   .spec__cell { border-bottom: 1px solid var(--rule); }
   .spec__cell:first-child { padding-left: 1.2rem; }
@@ -499,6 +603,10 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   .egress__side--cloud { border-left: 1.5px solid var(--ink); border-top: 0; }
   .egress__wall { width: auto; height: 44px; border-block: 0; border-inline: 1.5px solid var(--ink); }
   .egress__walllabel { transform: translate(-50%, -50%); }
+  .steps { grid-template-columns: 1fr; }
+  .steps__item { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .steps__item:last-child { border-bottom: 0; }
+  .reserve__grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   .nav__links, .nav__cta { display: none; }
@@ -509,7 +617,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
     background: var(--paper); border-bottom: 1.5px solid var(--ink);
     padding: 1.4rem var(--pad); font-size: 0.95rem;
   }
-  .nav__rev { display: none; }
   .spec__row { grid-template-columns: 1fr 1fr; }
   .modes__tabs { grid-template-columns: 1fr; }
   .mtab { border-right: 0; border-bottom: 1px solid var(--rule); flex-direction: row; align-items: baseline; gap: 0.8rem; }
@@ -522,6 +629,6 @@ code { font-family: var(--ff-mono); font-size: 0.92em; }
   .who__item { border-right: 0; border-bottom: 1px solid var(--rule); }
   .who__item:last-child { border-bottom: 0; }
   .pricetable thead th { padding: 0.6rem; }
-  .btable tbody th { width: auto; }
-  .hero__meta span:last-child { display: none; }
+  .box li { flex-direction: column; gap: 0.15rem; }
+  .box__v { text-align: left; }
 }

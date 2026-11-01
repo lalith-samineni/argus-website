@@ -1,8 +1,9 @@
 # Argus — website
 
-Marketing site for Argus, a privacy-first edge-AI camera that watches for the
-moments that matter (a drowsy driver, a fallen parent, an intruder) and alerts
-instantly — without a single video frame ever leaving the device.
+Product site for Argus, a $150 camera that runs its AI on board. It tells you a
+driver's eyes left the road, or that someone fell — without a single frame of
+video leaving the device. The site's job is to explain the product and take
+reservations.
 
 ## Run it
 
@@ -13,34 +14,42 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Add your demo videos
+## The walkthrough video
 
-Drop H.264 `.mp4` files (16:9) into `assets/` — the players pick them up
-automatically, no code changes:
+`assets/demo.mp4` is the 2:31 hands-on walkthrough (portrait, 540×960, H.264 /
+AAC, ~20 MB) and plays in the hero. `assets/demo-poster.jpg` is the still shown
+before playback — frame 40 s, the assembled unit.
 
-| File | Where it plays |
-|------|----------------|
-| `assets/demo.mp4` | Hero bench demo (FIG. 01) |
-| `assets/demo-drive.mp4` | Field clip, Drive mode (FIG. 03) |
-| `assets/demo-care.mp4` | Field clip, Care mode |
-| `assets/demo-watch.mp4` | Field clip, Watch mode |
+To swap in a new cut, replace both files and update two things in `index.html`:
+the `<span class="demo__time">` label and the duration in `README`. If the new
+clip is landscape, change `aspect-ratio: 9 / 16` on `.demo__video` in
+`styles.css` to `16 / 9` — the hero grid handles either.
 
-Until a file exists, the slot shows a styled "NO SIGNAL" frame.
+## Page order
+
+| Section | What it does |
+|---------|--------------|
+| Hero | The claim, the price, the walkthrough, the reserve button |
+| Spec strip | Five facts a buyer checks first |
+| The device | What it is and what's in the box, with the Rev C drawing (FIG. 01) |
+| What it watches | Drive / Care / Watch, the alert as it lands, plain-language setup, the 2 s threshold (FIG. 02) |
+| How it sees | Signal chain (FIG. 03) and the egress boundary (FIG. 04) |
+| Setup | The three steps from box to watching |
+| Price | $150 + $12/mo, split by what each buys, and who it's for |
+| Reserve | Email form, what happens next, and the six questions people ask first |
 
 ## The design
 
-**The engineering dossier.** Argus is an optical instrument, so the site is styled
-as its documentation: lab-white paper, ink rules, numbered figures (FIG. 01–06),
-dimension-line section dividers, camera-calibration checkers on the video frames, and a
-real title block on the enclosure drawing.
+A quiet paper page around one loud thing: the walkthrough. Lab-white stock, ink
+rules, numbered figures and dimension-line dividers — the product is an optical
+instrument, so the page is set like its documentation. The only dark surfaces are
+where the product itself appears: the video well and the phone notification.
 
-- **Type** — Archivo (expanded/black) display · Hanken Grotesk body · IBM Plex Mono annotations
-- **Color** — paper `#F6F6F2`, ink `#15181A`, safety orange `#E8500A` (signal/alerts),
+- **Type** — Archivo (expanded/black) display · Hanken Grotesk body · IBM Plex Mono for data
+- **Color** — paper `#F6F6F2`, ink `#15181A`, safety orange `#E8500A` (signal),
   verification green `#17694A` (private/working). Tokens at the top of `styles.css`.
-- **No decorative animation.** The only motion is functional: the mode switcher
-  (mirrors remote mode switching in the iOS app) and native video playback.
-  Diagrams that used to animate are now static engineering drawings — the numbers
-  themselves carry the weight.
+- **No decorative animation.** The only motion is the profile switcher (which
+  mirrors the remote switch in the iOS app) and video playback.
 
 ## Files
 
@@ -48,12 +57,16 @@ real title block on the enclosure drawing.
 |------|---------|
 | `index.html` | All markup and content, including the SVG figures |
 | `styles.css` | Full visual system |
-| `script.js`  | Mobile nav, mode switcher, reserve form — nothing else |
-| `assets/` | Drop demo videos here |
+| `script.js`  | Mobile nav, profile switcher, reserve form — nothing else |
+| `assets/` | Walkthrough video, poster still, favicon |
 
 ## Before launch
 
-- Benchmark scores in TBL. 01 (94 / 88 / 79) are illustrative — substitute published
-  run figures (the table footnote says so on-page too).
-- Enclosure dimensions in FIG. 06 are placeholders — set them to the real Rev C numbers.
-- The reserve form is front-end only — wire it to a backend or email provider.
+- **The reserve form is front-end only.** `script.js` validates the address and
+  prints a confirmation; nothing is stored. Wire the submit handler to a backend
+  or email provider before taking real reservations.
+- **Enclosure dimensions in FIG. 01** are Rev C as printed — confirm them against
+  the production parts.
+- **Claims to keep honest:** the 30-day return window, "first production run",
+  and the $12/mo feature split are all stated as fact on the page. Make sure they
+  match what you actually intend to offer.
