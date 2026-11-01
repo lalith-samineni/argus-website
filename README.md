@@ -28,22 +28,34 @@ the hero grid handles either.
 
 ## Product shots
 
-Two plates sit in **The device** section, each tied to a file in `assets/`:
+**The device** section carries three sets of imagery, all driven by files in
+`assets/`:
 
-| File | Plate | Fit |
-|------|-------|-----|
-| `assets/retail-render.png` | Retail unit — how it ships | `contain`, so the whole render shows on white |
-| `assets/prototype.jpg` | Rev C prototype — what's running today | `cover`, cropped to 4:3 |
+| Figure | Files | Layout |
+|--------|-------|--------|
+| FIG. 01 | inline SVG | The *prototype* enclosure drawing (Rev C, printed) |
+| `#shots` | `render-1-unit.jpg`, `prototype.jpg` | Two-up: what ships vs. what's running today |
+| `#renders` | `render-2`…`render-7` | Three-up grid: the other angles, then the four mounts |
 
-Drop a file in and its plate appears; no code change. A plate whose file is
-missing removes itself instead of showing a broken image, and the whole figure
-stays hidden until at least one has landed — so the page never shows an empty
-slot in public. With one plate the figure goes single-column and the caption
-changes from the pairing line to just "The hardware".
+The renderings came from `Argus Retail Puck.pdf` (7 pages). Each page was
+rendered at 2× and cropped with **one common rect** — `x274 y150 653×490` at
+1× — so every render keeps the same scale and the puck doesn't jump size
+between plates. The crop drops the sheet's burned-in "ARGUS / RETAIL
+RENDERING" header and its disclaimer footer; the disclaimer is reinstated once,
+under the grid, rather than seven times.
 
-Landscape images around 4:3 work best (roughly 1200×900 or larger).
+Order is encoded in the filenames: unit → side → back → vehicle → tabletop →
+wall → corner.
 
-> `loading="lazy"` is deliberately *not* set on these images. The figure starts
+Plate behaviour (shared by both figures): drop a file in and its plate appears,
+no code change. A plate whose file is missing removes itself instead of showing
+a broken image, and a figure stays hidden until at least one of its plates has
+landed. With a single plate a figure goes one column and its caption switches to
+the short form.
+
+Landscape images at 4:3 work best (1306×980 is what the renders are).
+
+> `loading="lazy"` is deliberately *not* set on these images. A figure starts
 > `display:none`, and a lazy image inside a hidden element never loads, so the
 > reveal would never fire.
 
@@ -78,15 +90,19 @@ where the product itself appears.
 | `index.html` | All markup and content, including the SVG figures |
 | `styles.css` | Full visual system |
 | `script.js`  | Mobile nav and the reserve form — nothing else |
-| `assets/` | Walkthrough video, product shots, favicon |
+| `assets/` | Walkthrough video, renderings, prototype photo, favicon |
 
 ## Before launch
 
 - **The reserve form is front-end only.** `script.js` validates the address and
   prints a confirmation; nothing is stored. Wire the submit handler to a backend
   or email provider before taking real reservations.
-- **The retail rendering is missing.** `assets/retail-render.png` has no file
-  behind it, so that plate is hidden. Add the render and it appears.
+- **The copy still describes the prototype, not the retail unit.** The device
+  section is headed "One small box", says the enclosure is "PETG, printed,
+  Rev C", and lists mounts as "Dash pad, wall plate, ¼-20 for any tripod" —
+  all written before the renderings existed. The renderings show a moulded
+  puck with four mount pads and four named mounts (vehicle, tabletop, wall,
+  corner). Decide which of these ships in the box and reword those lines.
 - **The prototype image is a still lifted from the walkthrough video**, not a
   photograph. It's sharp enough at the size it's shown, but a real photo of the
   Rev C unit would be better — replace `assets/prototype.jpg`.
