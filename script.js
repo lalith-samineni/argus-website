@@ -1,5 +1,5 @@
 /* =========================================================================
-   Argus — interaction layer.
+   Argus: interaction layer.
    Functional only: mobile nav and the reserve form. No decorative animation.
    ========================================================================= */
 (function () {
@@ -70,12 +70,12 @@
       const val = input.value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
         msg.style.color = "var(--signal)";
-        msg.textContent = "That email doesn't look right — check it and try again.";
+        msg.textContent = "That email doesn't look right. Check it and try again.";
         input.focus();
         return;
       }
       msg.style.color = "var(--ok)";
-      msg.textContent = "Reserved. We'll email you when your unit is built — no charge until you confirm.";
+      msg.textContent = "Reserved. We'll email you when your unit is built. No charge until you confirm.";
       input.value = "";
       input.blur();
     });
